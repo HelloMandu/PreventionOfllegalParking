@@ -9,5 +9,8 @@
     "koa": "^2.13.0",
     "koa-router": "^9.4.0",
     "xlsx": "^0.16.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0"
   }
 }
