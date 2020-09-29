@@ -13,7 +13,7 @@ const api = new Router()
 
 let isPossible = true
 
-api.get('/coords.json', (req, res) => {
+api.get('/coords', (req, res) => {
   let { query } = url.parse(req.url)
   let name = qs.parse(query)
   let range = JSON.parse(name.range)
