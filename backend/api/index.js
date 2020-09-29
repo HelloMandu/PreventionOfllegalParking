@@ -1,18 +1,18 @@
-const Koa = require('koa');
-const Router = require('koa-router');
-const section = require('./section');
+const Koa = require('koa')
+const Router = require('koa-router')
+const routes = require('./routes/coords')
 
-const app = new Koa();
-const router = new Router();
+const app = new Koa()
+const router = new Router()
 
-router.get('/', ctx=>{
-    ctx.body="test"
+router.get('/', (ctx) => {
+  ctx.body = 'test'
 })
 
-router.use('/section', section.routes());
+router.use('/rotues', routes.routes())
 
-app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods())
 
-app.listen(4000, () =>{
-    console.log("4000good");
+app.listen(4000, () => {
+  console.log('4000good')
 })
