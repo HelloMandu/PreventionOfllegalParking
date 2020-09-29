@@ -1,7 +1,7 @@
 .main{
     background-image: url('../images/bugatti_bg.png');
-    width: 100%;
-    height: 650px;
+    width: 100vw;
+    height: 100vh;
     .header{
         position: relative;
         width: 100%;
@@ -53,6 +53,8 @@
             transition: all .2s ease-in-out;
             &:hover{
                 cursor: pointer;
+            }
+            &:active{
                 transform: scale(0.9);
             }
             .bugatti_body{
@@ -63,7 +65,7 @@
                 position: absolute;
                 width: 17%;
                 height: 57%;
-                top: 45%;
+                top: 44%;
                 left: 12%;
                 transition: all .3s ease-in-out;
             }
@@ -71,12 +73,12 @@
                 position: absolute;
                 width: 17%;
                 height: 57%;
-                top: 45%;
+                top: 44%;
                 right: 8%;
                 transition: all .3s ease-in-out;
             }
             .loading{
-                transform: rotate(-360deg);
+                animation: rotate_image .3s linear infinite;
             }
         }
     }
@@ -128,4 +130,8 @@
         }
     }
 }
-
+@keyframes rotate_image{
+	100% {
+    	transform: rotate(-360deg);
+    }
+}
