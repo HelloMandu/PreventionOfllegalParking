@@ -7,8 +7,8 @@ import KakaoMap from "./components/KakaoMap";
 const App = () => {
     return (
         <div>
-            {/* <MainPage></MainPage> */}
-            <KakaoMap></KakaoMap>
+            <MainPage></MainPage>
+            {/* <KakaoMap></KakaoMap> */}
         </div>
     );
 }

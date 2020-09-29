@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import cn from "classnames";
 // import "../SCSS/SportsCar.scss";
 import CarBody from "../images/bugatti_body.png";
@@ -6,7 +6,7 @@ import CarTire from "../images/bugatti_tire.png";
 
 const SportsCar = () => {
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
+    const canParking = useCallback(() =>{
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
@@ -14,7 +14,7 @@ const SportsCar = () => {
         }, 2000);
     }, []);
     return (
-        <div className="sportscar">
+        <div className="sportscar" onClick={canParking}>
             <div className="bugatti">
                 <img className="bugatti_body" src={CarBody} alt="" />
                 <img className={cn("bugatti_tire", {loading})} src={CarTire} alt="" />
