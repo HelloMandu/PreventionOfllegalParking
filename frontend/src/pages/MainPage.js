@@ -6,7 +6,7 @@ import '../SCSS/MainPage.scss'
 
 const MainPage = () => {
     return (
-        <div className="main">
+        <div className="main-page">
             <Header></Header>
             <SportsCar></SportsCar>
             <NaviList></NaviList>

@@ -1,14 +1,13 @@
 import React from "react";
 import MainPage from "./pages/MainPage";
+import MapPage from './pages/MapPage';
 import './SCSS/index.scss'
-import NavList from "./components/NavList";
-import KakaoMap from "./components/KakaoMap";
 
 const App = () => {
     return (
         <div>
             {/* <MainPage></MainPage> */}
-            <KakaoMap></KakaoMap>
+            <MapPage></MapPage>
         </div>
     );
 }

@@ -1,17 +1,16 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import cn from "classnames";
 // import "../SCSS/SportsCar.scss";
 import CarBody from "../images/bugatti_body.png";
 import CarTire from "../images/bugatti_tire.png";
-
+import {getLocation} from '../api/location';
 const SportsCar = () => {
     const [loading, setLoading] = useState(false);
-    const canParking = useCallback(() =>{
+    const canParking = useCallback(async () =>{
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            console.log("god");
-        }, 2000);
+        const result = await getLocation();
+        console.log(result);
+        setLoading(false);
     }, []);
     return (
         <div className="sportscar" onClick={canParking}>

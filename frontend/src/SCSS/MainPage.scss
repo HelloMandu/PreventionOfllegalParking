@@ -1,28 +1,27 @@
-.main{
-    background-image: url('../images/bugatti_bg.png');
+.main-page {
+    background-image: url("../images/bugatti_bg.png");
     width: 100vw;
     height: 100vh;
-    .header{
+    .header {
         position: relative;
         width: 100%;
         height: 150px;
         color: white;
-        //header__logo 작업오야지
-        .header__title{
+        .header__title {
             position: absolute;
             transform: translateX((-50%));
             left: 50%;
             font-size: 50px;
             font-weight: bold;
         }
-        .header__login{
+        .header__login {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             right: 50px;
             width: 120px;
             height: 35px;
-            .login-button{
+            .login-button {
                 position: absolute;
                 width: 100%;
                 font-size: 25px;
@@ -31,8 +30,8 @@
                 text-decoration: none;
                 border: 1px solid black;
                 border-radius: 5px;
-                transition: all .5s;
-                &:hover{
+                transition: all 0.5s;
+                &:hover {
                     background-color: #ffcd36;
                     color: black;
                 }
@@ -47,91 +46,91 @@
         height: 300px;
         justify-content: center;
         .bugatti {
-            top:15%;
+            top: 15%;
             width: 600px;
             position: absolute;
-            transition: all .2s ease-in-out;
-            &:hover{
+            transition: all 0.2s ease-in-out;
+            &:hover {
                 cursor: pointer;
             }
-            &:active{
+            &:active {
                 transform: scale(0.9);
             }
-            .bugatti_body{
+            .bugatti_body {
                 width: 100%;
                 height: 100%;
             }
-            .bugatti_tire{
+            .bugatti_tire {
                 position: absolute;
                 width: 17%;
                 height: 57%;
                 top: 44%;
                 left: 12%;
-                transition: all .3s ease-in-out;
+                transition: all 0.3s ease-in-out;
             }
-            .bugatti_tire2{
+            .bugatti_tire2 {
                 position: absolute;
                 width: 17%;
                 height: 57%;
                 top: 44%;
                 right: 8%;
-                transition: all .3s ease-in-out;
+                transition: all 0.3s ease-in-out;
             }
-            .loading{
-                animation: rotate_image .3s linear infinite;
+            .loading {
+                animation: rotate_image 0.3s linear infinite;
             }
         }
     }
-    .nav__menu{
+    .nav__menu {
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
         padding-left: 0;
         list-style: none;
-        li{
+        li {
             border: 1px solid #ffcd36;
             border-radius: 50%;
             width: 150px;
             height: 150px;
             margin-right: 50px; // 사이에만 margin생기도록 수정할 것
-            margin-left: 50px;// 사이에만 margin생기도록 수정할 것
-            transition: all .3s ease-in-out;
-            .nav__image{
+            margin-left: 50px; // 사이에만 margin생기도록 수정할 것
+            transition: all 0.3s ease-in-out;
+            .nav__image {
                 margin-top: 32px;
-                svg{
-                transition: all .3s ease-in-out;
+                svg {
+                    transition: all 0.3s ease-in-out;
                     width: 48px;
                     height: 48px;
                     fill: #ffcd36;
                 }
             }
-            .nav__explain{
+            .nav__explain {
                 color: #ffcd36;
                 font-weight: bold;
             }
-            a{
+            a {
                 text-decoration: none;
             }
-            &:hover{
+            &:hover {
                 cursor: pointer;
-                background-color:  #ffcd36;
+                background-color: #ffcd36;
                 color: black;
-                .nav__image{
-                    svg{
+                .nav__image {
+                    svg {
                         transform: scale(1.5);
                         fill: black;
                     }
                 }
-                .nav__explain{
+                .nav__explain {
                     color: black;
                 }
             }
         }
     }
 }
-@keyframes rotate_image{
-	100% {
-    	transform: rotate(-360deg);
+@keyframes rotate_image {
+    100% {
+        transform: rotate(-360deg);
     }
 }
