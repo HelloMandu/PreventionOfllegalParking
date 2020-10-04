@@ -6,11 +6,14 @@ import CarTire from "../images/bugatti_tire.png";
 import {getLocation} from '../api/location';
 const SportsCar = () => {
     const [loading, setLoading] = useState(false);
-    const canParking = useCallback(async () =>{
-        setLoading(true);
-        const result = await getLocation();
-        console.log(result);
-        setLoading(false);
+    const canParking = useCallback(() =>{
+        // const getParkInfo = async () =>{
+        //     setLoading(true);
+        //     const result = await getLocation();
+        //     console.log(result);
+        //     setLoading(false);
+        // }
+        // getParkInfo();
     }, []);
     return (
         <div className="sportscar" onClick={canParking}>

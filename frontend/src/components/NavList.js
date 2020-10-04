@@ -1,17 +1,6 @@
 import React from "react";
-import Icons from "../images/Icons";
-import { Link } from "react-router-dom";
+import NavItem from './NavItem';
 
-const NavItem = ({ url, explain }) => {
-    return (
-        <div>
-            <div className="nav__image">
-                <Icons>{url}</Icons>
-            </div>
-            <div className="nav__explain">{explain}</div>
-        </div>
-    );
-};
 
 const NavList = () => {
     const navList = [
@@ -23,7 +12,7 @@ const NavList = () => {
         {
             id: 2,
             url: "description",
-            explain: "불법주정차 내용",
+            explain: "불법주정차 규정",
         },
         {
             id: 3,
@@ -36,9 +25,7 @@ const NavList = () => {
             <ul className="nav__menu">
                 {navList.map(({ id, url, explain }) => (
                     <li key={id}>
-                        <Link to={`/${url}`}>
-                            <NavItem url={url} explain={explain}></NavItem>
-                        </Link>
+                        <NavItem url={url} explain={explain}></NavItem>
                     </li>
                 ))}
             </ul>

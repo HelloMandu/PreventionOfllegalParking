@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import NaviList from "../components/NavList";
+import NavList from "../components/NavList";
 import SportsCar from "../components/SportsCar";
 import '../SCSS/MainPage.scss'
 
@@ -9,7 +9,7 @@ const MainPage = () => {
         <div className="main-page">
             <Header></Header>
             <SportsCar></SportsCar>
-            <NaviList></NaviList>
+            <NavList></NavList>
         </div>
     );
 }
