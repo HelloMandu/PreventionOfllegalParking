@@ -9,7 +9,7 @@ router.get('/', (ctx) => {
   ctx.body = 'test'
 })
 
-router.use('/rotues', routes.routes())
+router.use('/routes', routes.routes())
 
 app.use(router.routes()).use(router.allowedMethods())
 
