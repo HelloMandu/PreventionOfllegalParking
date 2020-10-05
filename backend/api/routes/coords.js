@@ -15,6 +15,7 @@ let isPossible = true
 
 api.get('/coords.json', (req, res) => {
   let { query } = url.parse(req.url)
+  console.log(req.url)
   let name = qs.parse(query)
   let range = JSON.parse(name.range)
   let Bus = [],
@@ -22,8 +23,8 @@ api.get('/coords.json', (req, res) => {
     Crosswalk = [],
     Parking = []
   let cur = {
-    latitude: JSON.parse(name.lat),
-    longitude: JSON.parse(name.long),
+    latitude: JSON.parse(name.latitude),
+    longitude: JSON.parse(name.longitude),
   }
   // 현재 좌표에서 300m 이내에 있는 소방용수 시설, 버스정류장, 횡단보도, 주차장 표시
   function getCoordinates(json, kind) {
