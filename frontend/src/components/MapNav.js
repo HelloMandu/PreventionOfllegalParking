@@ -1,8 +1,8 @@
-import React from 'react';
-import NavItem from './NavItem';
-import {Link} from 'react-router-dom';
+import React from "react";
+import NavItem from "./NavItem";
+import { Link } from "react-router-dom";
 
-const MapNav = () =>{
+const MapNav = () => {
     const mapNavList = [
         {
             id: 1,
@@ -29,21 +29,30 @@ const MapNav = () =>{
             url: "crosswalk",
             explain: "횡단보도",
         },
-    ]
-    return(
+    ];
+    return (
         <div className="map-nav">
             <div className="map-nav_title">
-                <Link to='/'><h2>Safe<br/>Parking</h2></Link>
+                <Link to="/">
+                    <h2>
+                        Safe
+                        <br />
+                        Parking
+                    </h2>
+                </Link>
             </div>
             <ul className="map-nav__list">
-            {mapNavList.map(({ id, url, explain }) => (
+                {mapNavList.map(({ id, url, explain }) => (
                     <li key={id}>
-                        <NavItem url={`location/${url}`} explain={explain}></NavItem>
+                        <NavItem
+                            url={`location/${url}`}
+                            explain={explain}
+                        ></NavItem>
                     </li>
                 ))}
             </ul>
         </div>
-    )
-}
+    );
+};
 
 export default MapNav;

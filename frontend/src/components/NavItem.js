@@ -4,14 +4,10 @@ import { Link } from "react-router-dom";
 
 const NavItem = ({ url, explain }) => {
     return (
-        <div>
-            <Link to={`/${url}`}>
-                <div className="nav-item">
-                    <div className="nav__image">
-                        <Icons>{url}</Icons>
-                    </div>
-                    <div className="nav__explain">{explain}</div>
-                </div>
+        <div className="nav-item">
+            <Link to={`/${url}`} className="nav__link">
+                <Icons>{url}</Icons>
+                <div className="nav__explain">{explain}</div>
             </Link>
         </div>
     );
