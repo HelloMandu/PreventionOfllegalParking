@@ -1,15 +1,16 @@
 import React from "react";
-import Header from "../components/Header";
-import NavList from "../components/NavList";
-import SportsCar from "../components/SportsCar";
-import '../SCSS/MainPage.scss'
+
+import LocationContainer from '../containers/LocationContainer/LocationContainer';
+
+import Search from '../components/Search/Search';
+import SportsCar from '../components/Sportscar/SportsCar'
 
 const MainPage = () => {
     return (
-        <div className="main-page">
-            <Header></Header>
+        <div>
+            {/* <Search></Search> */}
+            <LocationContainer></LocationContainer>
             <SportsCar></SportsCar>
-            <NavList></NavList>
         </div>
     );
 }

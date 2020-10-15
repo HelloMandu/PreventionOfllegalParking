@@ -21,21 +21,16 @@ const NavList = () => {
     const navList = [
         {
             id: 1,
-            url: "home",
-            title: "홈",
-        },
-        {
-            id: 2,
             url: "location",
             title: "불법주차구역",
         },
         {
-            id: 3,
+            id: 2,
             url: "rule",
             title: "불법주차규정",
         },
         {
-            id: 4,
+            id: 3,
             url: "parking",
             title: "공용주차장",
         },

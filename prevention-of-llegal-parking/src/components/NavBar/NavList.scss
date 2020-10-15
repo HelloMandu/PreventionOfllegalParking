@@ -1,7 +1,7 @@
 .nav-list{
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 1000px;
     height: 100%;
     list-style: none;
     font-size: 20px;
@@ -17,14 +17,17 @@
                 top: 16px;
                 width: 48px;
                 height: 48px;
-                fill:#ffcd36;
+                fill: #9aaaae;
             }
             .nav-title{
                 transition: all .3s ease-in-out;
-                color: #7e8788;
+                color: #9aaaae;
             }
         }
         &:hover{
+            .icon{
+                fill: #ffcd36;
+            }
             .nav-title{
                 color: #ffcd36;
             }
@@ -34,5 +37,9 @@
 @media (max-width: 768px) {
     .nav-title {
         display: none;
+    }
+    .icon{
+        width: 24px;
+        height: 24px;
     }
 }

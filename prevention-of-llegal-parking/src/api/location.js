@@ -1,11 +1,13 @@
-import axios from 'axios'
+import {get} from 'axios'
 
-export const getLocation = async (lat=35.1948674, long=127.848583, range=30000) => {
-    const URL = `/routes/coords`;
-    const result = await axios.get(URL,{
+export const getLocation = async () => {
+    const latitude = localStorage.getItem('latitude');
+    const longitude = localStorage.getItem('longitude');
+    const range = 3000;
+    const result = await get('/coords',{
         params:{
-            lat: lat,
-            long: long,
+            latitude: latitude,
+            longitude: longitude,
             range: range
         }
     });

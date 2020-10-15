@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 const {kakao} = window;
 
 const drawMap = () =>{
-        let container = document.getElementById("kakaomap");
-        let options = {
+        const container = document.getElementById("kakaomap");
+        const options = {
             center: new kakao.maps.LatLng(33.450701, 126.570667),
             level: 3,
         };
@@ -22,7 +22,6 @@ const KakaoMap = () =>{
     })
     return(
         <div id='kakaomap'>
-            
         </div>
     )
 }

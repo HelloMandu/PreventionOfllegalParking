@@ -11,9 +11,9 @@ const initialState = {
 
 const location = handleActions(
     {
-        [SETLOCATION]: (state, action) => ({
-            latitude: state.latitude,
-            longitude: state.longitude
+        [SETLOCATION]: (state, {payload: location}) => ({
+            latitude: location.latitude,
+            longitude: location.longitude
         }),
     },
     initialState
