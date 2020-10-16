@@ -1,18 +1,14 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import MainPage from "./pages/MainPage";
+import { useSelector, useDispatch } from "react-redux";
+import { setLocation } from "./modules/location";
+import MainPage from "./pages/MainPage/MainPage";
 import MapPage from './pages/MapPage';
 import NavBar from './components/NavBar/NavBar'
 import './SCSS/index.scss'
 
 const App = () => {
-    useEffect(()=>{
-        navigator.geolocation.getCurrentPosition((position) => {
-            localStorage.setItem('latitude', position.coords.latitude);
-            localStorage.setItem('longitude', position.coords.longitude);
-            console.log("locationInit");
-          });
-    }, [])
+    const dispatch = useDispatch();
     return (
         <div>
             <NavBar></NavBar>
