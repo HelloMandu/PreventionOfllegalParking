@@ -11,7 +11,7 @@
         height: 100%;
         .searchbar{
             position: absolute;
-            top: 3px;
+            top: 6px;
             z-index: 1500;
         }
         #kakaomap{
@@ -23,5 +23,12 @@
             border-radius: 5px;
         }
     }
+}
 
+@media screen and (max-width: 768px){
+    .location-page{
+        width: 100%;
+        padding: 0px;
+        padding-top: 1px;
+    }
 }

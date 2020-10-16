@@ -10,9 +10,7 @@ import "./LocationContainer.scss";
 const LocationContainer = () => {
     const [onMap, setOnMap] = useState(false);
     const location = useSelector((state) => state.location);
-    const dispatch = useDispatch();
     const handleGPS = useCallback(() => {
-
         setOnMap(!onMap);
     }, [onMap]);
     return (
@@ -21,6 +19,7 @@ const LocationContainer = () => {
                 <Search handleGPS={handleGPS}></Search>
                 <Map
                     onMap={onMap}
+                    setOnMap={setOnMap}
                     location={location}
                 ></Map>
             </div>
