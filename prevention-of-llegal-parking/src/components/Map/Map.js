@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../modules/location";
 import { ButtonBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import CarIcon from "../../images/car_icon.svg";
+import CarIcon from "../../images/car_icon.png";
 
 const { kakao } = window;
 
@@ -57,7 +57,6 @@ const drawMap = (location) => {
         locationButton.dataset.longitude = latlng.getLng();
     });
     kakao.maps.event.addListener(map, "center_changed", () => {
-        var level = map.getLevel(); // 지도의  레벨을 얻어옵니다
         var latlng = map.getCenter(); // 지도의 중심좌표를 얻어옵니다
         marker.setPosition(latlng); // 마커 위치를 중심 위치로 옮깁니다
         locationButton.dataset.latitude = latlng.getLat();
@@ -68,26 +67,15 @@ const drawMap = (location) => {
 const KakaoMap = ({ onMap, setOnMap, location }) => {
     const buttonStyle = buttonStyles();
     const dispatch = useDispatch();
-    let carLocation;
+    const carLocation = useRef(location);
     useEffect(() => {
         const locationButton = document.getElementById("location-button");
-        carLocation = {
+        carLocation.current = {
             latitude: locationButton.dataset.latitude,
             longitude: locationButton.dataset.longitude
         }
-        drawMap(carLocation);
+        drawMap(carLocation.current);
     });
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const location = {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                };
-                dispatch(setLocation(location));
-            });
-        }
-    }, [])
     return (
         <div
             id="kakaomap"
