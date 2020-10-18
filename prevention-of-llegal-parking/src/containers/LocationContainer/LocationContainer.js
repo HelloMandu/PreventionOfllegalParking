@@ -1,28 +1,13 @@
-import React, { useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setLocation } from "../../modules/location";
+import React from "react";
 
-import Search from "../../components/Search/Search";
 import Map from "../../components/Map/Map";
 
 import "./LocationContainer.scss";
 
-const LocationContainer = () => {
-    const [onMap, setOnMap] = useState(false);
-    const location = useSelector((state) => state.location);
-    const handleGPS = useCallback(() => {
-        setOnMap(!onMap);
-    }, [onMap]);
+const LocationContainer = ({ location, setLocation }) => {
     return (
-        <div className="location-page">
-            <div className="location-container">
-                <Search handleGPS={handleGPS}></Search>
-                <Map
-                    onMap={onMap}
-                    setOnMap={setOnMap}
-                    location={location}
-                ></Map>
-            </div>
+        <div className="location-container">
+            <Map location={location} setLocation={setLocation}></Map>
         </div>
     );
 };

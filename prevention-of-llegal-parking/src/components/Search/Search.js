@@ -1,27 +1,30 @@
 import React from "react";
 
-import Icon from '../../images/Icons';
-import useInput from "../../hooks/useInput";
+import SearchList from './SearchList';
+import useSearch from "../../hooks/useSearch";
 
-import './Search.scss';
+import Icon from "../../images/Icons";
 
-const Search = ({handleGPS}) => {
-    const [text, textChange] = useInput("");
+import "./Search.scss";
+
+const Search = ({ text, textChange }) => {
+    const [searchFocus, searchList, handleSearchToggle] = useSearch(text);
     return (
-        <div className="searchbar" >
-            <Icon onClick={handleGPS}>{"my-location"}</Icon>
+        <div className="searchbar">
             <input
                 className="search-text"
                 type="text"
-                placeholder="장소, 주소검색"
+                placeholder="장소, 주소, 주차장 검색"
                 value={text}
                 onChange={textChange}
+                onFocus={handleSearchToggle}
+                onBlur={handleSearchToggle}
             />
             <button className="search-click">
                 <Icon>{"search"}</Icon>
             </button>
+            {searchFocus && <SearchList searchList={searchList.current}/>}
         </div>
-
     );
 };
 

@@ -1,34 +1,11 @@
-.location-page{
-    position: absolute;
-    width: 360px;
-    height: 88vh;
-    top: 12vh;
-    right: 0;
-    padding: 4px 8px;
-    .location-container{
-        position: relative;
+.location-container{
+    position: relative;
+    width: auto;
+    height: 100%; 
+    margin-left: 300px;
+    #kakaomap{
+        position: absolute;
         width: 100%;
         height: 100%;
-        .searchbar{
-            position: absolute;
-            top: 6px;
-            z-index: 1500;
-        }
-        #kakaomap{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-        }
-    }
-}
-
-@media screen and (max-width: 768px){
-    .location-page{
-        width: 100%;
-        padding: 0px;
-        padding-top: 1px;
     }
 }

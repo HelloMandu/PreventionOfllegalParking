@@ -1,0 +1,39 @@
+.search-list{
+    position: absolute;
+    top: 36px;
+    list-style: none;
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 3px;
+    max-height: 400px;
+    overflow-y: scroll;
+    li{
+        color: #333;
+        cursor: pointer;
+        text-align: initial;
+        .search-item{
+            display: flex;
+            padding: 7px 20px 7px 7px;
+            .icon{
+                fill: #cecece;
+                width: 24px;
+                height: 24px;
+                margin-right: 12px;
+            }
+            .address{
+                width: 100%;
+                .title{
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                .description{
+                    font-size: 10px;
+                }
+            }
+            &:hover{
+                background-color: #f3f3f3;
+            }
+        }
+    }
+}

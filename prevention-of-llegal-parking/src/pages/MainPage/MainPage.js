@@ -1,15 +1,17 @@
 import React from "react";
+import useLocation from '../../hooks/useLocation';
 
+import SearchContainer from '../../containers/SearchContainer/SearchContainer';
 import LocationContainer from '../../containers/LocationContainer/LocationContainer';
-import SportsCar from '../../components/Sportscar/SportsCar'
 
 import './Mainpage.scss'
 
 const MainPage = () => {
+    const [location, setLocation] = useLocation();
     return (
         <div className="main-page">
-            <LocationContainer></LocationContainer>
-            <SportsCar></SportsCar>
+            <SearchContainer></SearchContainer>
+            <LocationContainer location={location} setLocation={setLocation}></LocationContainer>
         </div>
     );
 }

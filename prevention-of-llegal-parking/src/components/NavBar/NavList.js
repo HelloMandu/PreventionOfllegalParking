@@ -26,13 +26,14 @@ const NavList = () => {
         },
         {
             id: 2,
-            url: "rule",
-            title: "불법주차규정",
+            url: "parking",
+            title: "공용주차장",
+            
         },
         {
             id: 3,
-            url: "parking",
-            title: "공용주차장",
+            url: "rule",
+            title: "불법주차규정",
         },
     ];
     return (
