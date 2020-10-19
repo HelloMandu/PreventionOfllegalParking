@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
+import root from 'window-or-global';
 import { ButtonBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import CarIcon from "../../images/car_icon.png";
 
-const { kakao } = window;
+const { kakao } = root;
 
 const buttonStyles = makeStyles({
     root: {

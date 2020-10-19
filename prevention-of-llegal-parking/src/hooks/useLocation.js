@@ -8,19 +8,21 @@ const useLocation = () => {
         longitude: 126.570667,
     });
     const dispatch = useDispatch();
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setCurrent({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-            });
-            dispatch(
-                setLocation({
+    if (typeof window !== "undefined" && window.IntersectionObserver) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setCurrent({
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
-                })
-            );
-        });
+                });
+                dispatch(
+                    setLocation({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                    })
+                );
+            });
+        }
     }
     return [
         current,
