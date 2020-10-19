@@ -6,9 +6,9 @@ import Icons from "../../images/Icons";
 
 import "./SearchList.scss";
 
-const SearchItem = ({ title, address }) => {
+const SearchItem = ({ title, address, onClick }) => {
     return (
-        <div className="search-item">
+        <div className="search-item" onClick={onClick}>
             <Icons>{"marker"}</Icons>
             <div className="address">
                 <div className="title">{title}</div>
@@ -18,7 +18,7 @@ const SearchItem = ({ title, address }) => {
     );
 };
 
-const SearchList = ({ searchList }) => {
+const SearchList = ({ searchList, handleSearchItem }) => {
     const listKey = useRef(0);
     if (searchList === null || searchList.length === 0) {
         return null;
@@ -28,10 +28,11 @@ const SearchList = ({ searchList }) => {
             {searchList.map(({ bdNm, roadAddr }) => {
                 listKey.current += 1;
                 return (
-                    <li key={listKey.current}>
+                    <li key={listKey.current} >
                         <SearchItem
                             title={bdNm}
                             address={roadAddr}
+                            onClick={handleSearchItem}
                         ></SearchItem>
                     </li>
                 );

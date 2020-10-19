@@ -35,8 +35,8 @@ const drawMap = () => {
     ); // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
     const location = {
         latitude: locationButton.dataset.latitude,
-        longitude: locationButton.dataset.longitude
-    }
+        longitude: locationButton.dataset.longitude,
+    };
     const markerPosition = new kakao.maps.LatLng(
         location.latitude,
         location.longitude
@@ -58,20 +58,39 @@ const drawMap = () => {
         locationButton.dataset.latitude = latlng.getLat();
         locationButton.dataset.longitude = latlng.getLng();
     });
+    // var geocoder = new kakao.maps.services.Geocoder();
+    // geocoder.addressSearch("제주특별자치도 제주시 첨단로 242", function (
+    //     result,
+    //     status
+    // ) {
+    //     if (status === kakao.maps.services.Status.OK) {
+    //         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    //         var marker = new kakao.maps.Marker({
+    //             map: map,
+    //             position: coords,
+    //         });
+    //         var infowindow = new kakao.maps.InfoWindow({
+    //             content:
+    //                 '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
+    //         });
+    //         infowindow.open(map, marker);
+    //         map.setCenter(coords);
+    //     }
+    // });
 };
 
 const KakaoMap = ({ location, setLocation }) => {
     const buttonStyle = buttonStyles();
     useEffect(() => {
         drawMap();
-    }, []);
+    }, [location]);
     return (
         <div id="kakaomap">
             <ButtonBase
                 id="location-button"
                 className={buttonStyle.root}
-                data-latitude={location.current.latitude}
-                data-longitude={location.current.longitude}
+                data-latitude={location.latitude}
+                data-longitude={location.longitude}
                 onClick={(e) => {
                     setLocation({
                         latitude: e.target.dataset.latitude,
