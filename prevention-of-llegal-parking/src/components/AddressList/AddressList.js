@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 
 import Icons from "../../images/Icons";
 
-import "./SearchList.scss";
+import "./AddressList.scss";
 
-const SearchItem = ({ title, address, onClick }) => {
+const AddressItem = ({ title, address, onClick }) => {
     return (
-        <div className="search-item" onClick={onClick}>
+        <div className="address-item" onClick={onClick}>
             <Icons>{"marker"}</Icons>
             <div className="address">
                 <div className="title">{title}</div>
@@ -16,27 +16,28 @@ const SearchItem = ({ title, address, onClick }) => {
     );
 };
 
-const SearchList = ({ searchList, handleSearchItem, setSearchFocus }) => {
+const AddressList = ({ setSearched, searchList, setSearchFocus, handleSearchItem }) => {
     const listKey = useRef(0);
     if (searchList === null || searchList.length === 0) {
         return null;
     }
     return (
         <ul
-            className="search-list"
+            className="address-list"
             onClick={() => {
                 setTimeout(() => setSearchFocus(false), 100);
+                setSearched(false);
             }}
         >
             {searchList.map(({ bdNm, roadAddr }) => {
                 listKey.current += 1;
                 return (
                     <li key={listKey.current}>
-                        <SearchItem
+                        <AddressItem
                             title={bdNm}
                             address={roadAddr}
                             onClick={handleSearchItem}
-                        ></SearchItem>
+                        ></AddressItem>
                     </li>
                 );
             })}
@@ -44,4 +45,4 @@ const SearchList = ({ searchList, handleSearchItem, setSearchFocus }) => {
     );
 };
 
-export default SearchList;
+export default AddressList;

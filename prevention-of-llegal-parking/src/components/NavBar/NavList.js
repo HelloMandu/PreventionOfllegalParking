@@ -12,7 +12,7 @@ const NavItem = ({ url, title }) => {
             style={{  textDecoration: "none" }}
         >
             <Icons>{url}</Icons>
-            <span className="nav-title">{title}</span>
+            <div className="nav-title">{title}</div>
         </Link>
     );
 };

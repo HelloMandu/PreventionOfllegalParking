@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { getAddress } from "../api/Address";
+import { useState, useEffect } from "react";
+import { getAddress } from "../api/address";
 
 const getSearchList = async (text) => {
     const result = await getAddress(text);
@@ -9,15 +9,14 @@ const getSearchList = async (text) => {
 const useSearch = (text) => {
     const [searchFocus, setSearchFocus] = useState(false);
     const [searchList, setSearchList] = useState([]);
-    const handleSearchToggle = () => setSearchFocus(!searchFocus);
     const handleSearchList = async (text) => {
         const newSearchList = await getSearchList(text);
         setSearchList(newSearchList);
     };
     useEffect(() => {
-        return () => handleSearchList(text);
+        handleSearchList(text);
     }, [text]);
-    return [searchFocus, searchList, handleSearchToggle];
+    return [searchFocus, searchList, setSearchFocus, handleSearchList];
 };
 
 export default useSearch;

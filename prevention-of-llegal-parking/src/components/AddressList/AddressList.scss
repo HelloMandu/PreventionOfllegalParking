@@ -1,19 +1,18 @@
-.search-list{
-    position: absolute;
-    top: 36px;
-    list-style: none;
+.address-list{
     width: 100%;
+    max-height: 60vh;
     background-color: white;
     border: 1px solid rgb(212, 212, 212);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    max-height: 400px;
+    border-radius: 15px;
     overflow-y: scroll;
+    margin-top: 10px;
+    box-shadow: 1px 1px 10px;
+    pointer-events: auto;
     li{
         color: #333;
         cursor: pointer;
         text-align: initial;
-        .search-item{
+        .address-item{
             display: flex;
             padding: 7px 20px 7px 7px;
             .icon{
@@ -37,8 +36,7 @@
             }
         }
     }
-    
 }
-.search-list::-webkit-scrollbar {
+.address-list::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
 }

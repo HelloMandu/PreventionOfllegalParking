@@ -7,39 +7,51 @@
     font-size: 20px;
     font-weight: bold;
     .nav-item{
+        display: flex;
         text-align: center;
-        height: 100%;
+        justify-content: space-between;
+        align-items: center;
         max-width: 180px;
         cursor: pointer;
         .nav-link{
+            margin-bottom: 24px;
             .icon{
                 position: relative;
                 top: 16px;
                 width: 48px;
                 height: 48px;
-                fill: #9aaaae;
+                fill: black;
+                transition: all .3s ease-in-out;
             }
             .nav-title{
+                display: inline-block;
                 transition: all .3s ease-in-out;
-                color: #9aaaae;
+                color: black;
             }
         }
         &:hover{
             .icon{
-                fill: #ffcd36;
+                fill: #0475f4;
             }
             .nav-title{
-                color: #ffcd36;
+                color:#0475f4;
             }
         }
     }
 }
 @media (max-width: 768px) {
-    .nav-title {
-        display: none;
+    .nav-list{
+        .nav-item{
+            .nav-link{
+                .nav-title {
+                    display: none;
+                }
+                // .icon{
+                //     width: 24px;
+                //     height: 24px;
+                // }
+            }
+        }
     }
-    .icon{
-        width: 24px;
-        height: 24px;
-    }
+
 }

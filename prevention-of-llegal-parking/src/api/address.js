@@ -4,7 +4,7 @@ const URL = "http://www.juso.go.kr/addrlink/addrLinkApi.do";
 const KEY = "devU01TX0FVVEgyMDIwMDkxMDE4MzIxNzExMDE3MDA=";
 
 export const getAddress = async (search) =>{
-    const result = await get(URL, {
+    const response = await get(URL, {
         params: {
             confmKey: KEY,
             currentPage: 1,
@@ -13,5 +13,5 @@ export const getAddress = async (search) =>{
             resultType: 'json'
         },
     })
-    return result.data.results.juso;
+    return response.data.results.juso;
 }

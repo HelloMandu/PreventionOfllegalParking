@@ -1,36 +1,37 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setLocation } from "../modules/location";
+import { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setLocationSaga } from "../modules/location";
+import root from "window-or-global";
+import { useEffect } from "react";
 
 const useLocation = () => {
-    const [current, setCurrent] = useState({
-        latitude: 33.450701,
-        longitude: 126.570667,
-    });
+    const current = useSelector(state => state.location);
     const dispatch = useDispatch();
-    if (typeof window !== "undefined" && window.IntersectionObserver) {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                setCurrent({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                });
-                dispatch(
-                    setLocation({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                    })
-                );
-            });
-        }
-    }
-    return [
-        current,
+    const setCurrent = useCallback(
         (newLocation) => {
-            setCurrent(newLocation);
-            dispatch(setLocation(newLocation));
+            dispatch(setLocationSaga(newLocation));
         },
-    ];
+        [dispatch]
+    );
+    useEffect(() => {
+        if (typeof root !== "undefined" && root.IntersectionObserver) {
+            if (root.navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    dispatch(
+                        setLocationSaga({
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                        })
+                    );
+                });
+                console.log("Use navigator");
+            }
+        } else {
+            console.log("Cant' navigator");
+        }
+    }, [dispatch]);
+
+    return [current, setCurrent];
 };
 
 export default useLocation;
