@@ -1,18 +1,18 @@
 import { createAction, handleActions } from "redux-actions";
 import { call, delay, put, takeLatest } from "redux-saga/effects";
 
-import { roadToPosition } from "../api/roadToPosition";
+import { roadToPosition } from "../api/RoadToPosition";
 
-const SETLOCATION = "location/SETLOCATION";
-const SETLOCATION_SAGA = "location/SETLOCATION_SAGA";
+const SET_LOCATION = "location/SET_LOCATION";
+const SET_LOCATION_SAGA = "location/SET_LOCATION_SAGA";
 const ROAD_TO_POSITION = "location/ROAD_TO_POSITION";
 
 export const setLocation = createAction(
-    SETLOCATION,
+    SET_LOCATION,
     (newLocation) => newLocation
 );
 export const setLocationSaga = createAction(
-    SETLOCATION_SAGA,
+    SET_LOCATION_SAGA,
     (newLocation) => newLocation
 );
 export const roadToPositionSaga = createAction(
@@ -36,7 +36,7 @@ function* setRoadToPosition(action) {
 }
 
 export function* locationSaga() {
-    yield takeLatest(SETLOCATION_SAGA, setLocationAsync);
+    yield takeLatest(SET_LOCATION_SAGA, setLocationAsync);
     yield takeLatest(ROAD_TO_POSITION, setRoadToPosition);
 }
 
@@ -47,7 +47,7 @@ const initialState = {
 
 const location = handleActions(
     {
-        [SETLOCATION]: (state, { payload: location }) => ({
+        [SET_LOCATION]: (state, { payload: location }) => ({
             latitude: location.latitude,
             longitude: location.longitude,
         }),

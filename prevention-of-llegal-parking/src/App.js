@@ -9,7 +9,7 @@ const App = () => {
         <div>
             <NavBar></NavBar>
             <Switch>
-                <Route path={[`/`, `/location`, `/parking`]} exact={true} component={MapPage}></Route>
+                <Route path={[`/`, `/:type`]} exact={true} component={MapPage}></Route>
             </Switch>
         </div>
     );
