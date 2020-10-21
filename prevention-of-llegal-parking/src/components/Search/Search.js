@@ -25,7 +25,10 @@ const Search = (props) => {
                 placeholder="장소, 주소, 주차장 검색"
                 value={address}
                 onChange={addressChange}
-                onFocus={() => setSearchFocus(true)}
+                onFocus={() => {
+                    setSearchFocus(true);
+                    setSearched(false);
+                }}
             />
             <button
                 className="search-click"

@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import MainPage from "./pages/MainPage/MainPage";
-import MapPage from './pages/MapPage';
+import MapPage from "./pages/MapPage/MapPage";
 import NavBar from './components/NavBar/NavBar'
 import './SCSS/index.scss'
 
@@ -10,8 +9,7 @@ const App = () => {
         <div>
             <NavBar></NavBar>
             <Switch>
-                <Route path={`/`} exact={true} component={MainPage}></Route>
-                <Route path={`/location/:url?`} component={MapPage}></Route>
+                <Route path={[`/`, `/location`, `/parking`]} exact={true} component={MapPage}></Route>
             </Switch>
         </div>
     );

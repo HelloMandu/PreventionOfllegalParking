@@ -4,10 +4,12 @@ import useLocation from '../../hooks/useLocation';
 import SearchContainer from '../../containers/SearchContainer/SearchContainer';
 import LocationContainer from '../../containers/LocationContainer/LocationContainer';
 
-import './Mainpage.scss'
+import './MapPage.scss'
 
-const MainPage = () => {
+const MainPage = ({match}) => {
     const [location, setLocation] = useLocation();
+    const {type} = match.params;
+    // console.log(type);
     return (
         <div className="main-page">
             <SearchContainer></SearchContainer>

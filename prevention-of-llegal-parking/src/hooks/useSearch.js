@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { getAddress } from "../api/address";
 
 const getSearchList = async (text) => {
-    const result = await getAddress(text);
-    return result;
+    const response = await getAddress(text);
+    return response;
 };
 
 const useSearch = (text) => {

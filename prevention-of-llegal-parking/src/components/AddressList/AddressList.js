@@ -16,7 +16,11 @@ const AddressItem = ({ title, address, onClick }) => {
     );
 };
 
-const AddressList = ({ setSearched, searchList, setSearchFocus, handleSearchItem }) => {
+const AddressList = ({
+    searchList,
+    setSearchFocus,
+    handleSearchItem,
+}) => {
     const listKey = useRef(0);
     if (searchList === null || searchList.length === 0) {
         return null;
@@ -26,7 +30,6 @@ const AddressList = ({ setSearched, searchList, setSearchFocus, handleSearchItem
             className="address-list"
             onClick={() => {
                 setTimeout(() => setSearchFocus(false), 100);
-                setSearched(false);
             }}
         >
             {searchList.map(({ bdNm, roadAddr }) => {

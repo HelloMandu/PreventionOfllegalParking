@@ -52,7 +52,6 @@ const SearchContainer = () => {
             </div>
             {searched && (
                 <AddressList
-                    setSearched={setSearched}
                     searchList={searchList}
                     setSearchFocus={setSearchFocus}
                     handleSearchItem={handleSearchItem}

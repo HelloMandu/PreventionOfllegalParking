@@ -5,14 +5,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import CarIcon from "../../images/car_icon.png";
 
-import './Map.scss';
+import "./Map.scss";
 
 const { kakao } = root;
 
 const buttonStyles = makeStyles({
     root: {
         position: "absolute",
-        bottom: "0",
+        bottom: "0px",
         width: "100%",
         height: "48px",
         background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
@@ -68,7 +68,8 @@ const Map = ({ location, setLocation }) => {
         drawMap();
     }, [location]);
     return (
-        <div id="kakaomap">
+        <div>
+            <div id="kakaomap"></div>
             <ButtonBase
                 id="location-button"
                 className={buttonStyle.root}
