@@ -2,13 +2,13 @@
 const fs = require('fs')
 const XLSX = require('xlsx')
 
-let buf = fs.readFileSync('C:\\Users\\Sungmin\\Desktop\\4-2\\Final\\PreventionOfllegalParking\\backend\\data\\xlsx\\CCTV.xls')
+let buf = fs.readFileSync('C:\\Users\\Sungmin\\Desktop\\4-2\\Final\\PreventionOfllegalParking\\prevention-of-llegal-parking\\server\\data\\xlsx\\CCTV.xls')
 let wb = XLSX.read(buf, { type: 'buffer' })
 
 wb.SheetNames.forEach((sheetName) => {
   console.log('sheetName: ' + sheetName)
   let rows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName])
-  fs.writeFileSync(`C:\\Users\\Sungmin\\Desktop\\4-2\\Final\\PreventionOfllegalParking\\backend\\data\\json\\CCTV.json`, JSON.stringify(rows), (err) => {
+  fs.writeFileSync(`C:\\Users\\Sungmin\\Desktop\\4-2\\Final\\PreventionOfllegalParking\\prevention-of-llegal-parking\\server\\data\\json\\CCTV.json`, JSON.stringify(rows), (err) => {
     console.error(err)
   })
 })

@@ -5,14 +5,14 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSageMiddleware from "redux-saga";
-import {createLogger} from 'redux-logger';
+// import {createLogger} from 'redux-logger';
 
 import App from "./App";
 import "./index.css";
 import rootReducer, {rootSaga} from "./modules";
 import * as serviceWorker from "./serviceWorker";
 
-const logger = createLogger();
+// const logger = createLogger();
 const sagaMiddleware = createSageMiddleware();
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(/*logger,*/ sagaMiddleware)));
 sagaMiddleware.run(rootSaga);

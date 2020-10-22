@@ -21,7 +21,7 @@ export const roadToPositionSaga = createAction(
 );
 
 function* setLocationAsync(action) {
-    yield delay(500);
+    yield delay(300);
     yield put(setLocation(action.payload));
 }
 

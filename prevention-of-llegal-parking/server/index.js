@@ -19,5 +19,5 @@ router.use('/routes', parkingLot.routes());
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(4000, () => {
-  console.log('4000good')
+  console.log('Listening to port 4000')
 });

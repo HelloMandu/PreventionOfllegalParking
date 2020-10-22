@@ -4,17 +4,13 @@
     left: -350px;
     bottom: 0;
     width: 350px;
-    height: 90vh;
+    top: 10vh;
     transition: all .3s ease;
-    padding: 8px;
     pointer-events: none;
     .search-header{
         padding: 8px 12px;
         text-align: center;
         color: black;
-        background-color: white;
-        border-radius: 15px;
-        box-shadow: 1px 1px 10px;
         pointer-events: auto;
     }
     .on-search{
@@ -36,6 +32,9 @@
             width: 24px;
             height: 48px;
         }
+    }
+    .location-button{
+        display: flex;
     }
 }
 .seen{

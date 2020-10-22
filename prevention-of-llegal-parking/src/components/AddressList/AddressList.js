@@ -18,6 +18,7 @@ const AddressItem = ({ title, address, onClick }) => {
 
 const AddressList = ({
     searchList,
+    setSearched,
     setSearchFocus,
     handleSearchItem,
 }) => {
@@ -35,7 +36,10 @@ const AddressList = ({
             {searchList.map(({ bdNm, roadAddr }) => {
                 listKey.current += 1;
                 return (
-                    <li key={listKey.current}>
+                    <li
+                        key={listKey.current}
+                        onClick={() => setSearched(false)}
+                    >
                         <AddressItem
                             title={bdNm}
                             address={roadAddr}
