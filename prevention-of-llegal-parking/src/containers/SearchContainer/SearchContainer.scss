@@ -1,10 +1,10 @@
 .search-container{
     position: absolute;
     z-index: 1000;
-    left: -350px;
+    left: -500px;
     bottom: 0;
-    width: 350px;
-    top: 10vh;
+    width: 500px;
+    top: 0;
     transition: all .3s ease;
     pointer-events: none;
     .search-header{
@@ -20,7 +20,7 @@
         border: 1px solid black;
         border-radius: 3px;
         top: 36px;
-        left: 350px;
+        left: 500px;
         background-color: white;
         cursor: pointer;
         box-shadow: 0.5px 0.5px 3px;

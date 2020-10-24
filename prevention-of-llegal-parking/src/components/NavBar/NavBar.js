@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import NavList from './NavList';
-import logo from '../../images/logo.png';
+import logo from '../../assets/images/logo.png';
 
 import './NavBar.scss'
 

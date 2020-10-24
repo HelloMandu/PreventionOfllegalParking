@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import Icons from "../../images/Icons";
+import Icons from "../../assets/images/Icons";
 
 import "./SearchList.scss";
 

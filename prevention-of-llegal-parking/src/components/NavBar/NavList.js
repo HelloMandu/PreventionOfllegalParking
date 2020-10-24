@@ -1,5 +1,5 @@
 import React from "react";
-import Icons from "../../images/Icons";
+import Icons from "../../assets/images/Icons";
 import { Link } from "react-router-dom";
 
 import './NavList.scss'

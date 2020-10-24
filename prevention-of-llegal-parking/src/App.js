@@ -9,7 +9,6 @@ import "./SCSS/index.scss";
 const App = () => {
     return (
         <div>
-            <NavBar></NavBar>
             <Switch>
                 <Route
                     path={[`/`, `/:type`]}

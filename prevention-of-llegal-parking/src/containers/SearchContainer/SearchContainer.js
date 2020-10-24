@@ -11,7 +11,7 @@ import useSearch from "../../hooks/useSearch";
 import Search from "../../components/Search/Search";
 import AddressList from "../../components/AddressList/AddressList";
 
-import Icon from "../../images/Icons";
+import Icon from "../../assets/images/Icons";
 import "./SearchContainer.scss";
 
 const buttonStyles = makeStyles({

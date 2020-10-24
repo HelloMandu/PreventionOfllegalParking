@@ -2,7 +2,7 @@ import React from "react";
 
 import SearchList from "./SearchList";
 
-import Icon from "../../images/Icons";
+import Icon from "../../assets/images/Icons";
 
 import "./Search.scss";
 
