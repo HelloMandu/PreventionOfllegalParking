@@ -1,13 +1,13 @@
-const geolib = require('geolib')
+const geolib = require("geolib");
 
 const getCoordinates = (json, location, range) => {
     let result = [];
     json.forEach((obj) => {
-        if (obj.Latitude !== "" && obj.Longitude !== "") {
-            const { Latitude, Longitude } = obj;
+        const { LATITUDE, LONGITUDE } = obj;
+        if (LATITUDE !== "" && LONGITUDE !== "") {
             const destination = {
-                latitude: Latitude,
-                longitude: Longitude
+                latitude: LATITUDE,
+                longitude: LONGITUDE,
             };
             const distance = geolib.getDistance(location, destination);
             if (distance <= range) {

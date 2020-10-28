@@ -1,10 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import cn from "classnames";
-import { ButtonBase } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
-import { roadToPositionSaga } from "../../modules/location";
+import { roadToPositionSaga } from "../../modules/myLocation";
 import useInput from "../../hooks/useInput";
 import useSearch from "../../hooks/useSearch";
 
@@ -13,26 +11,9 @@ import AddressList from "../../components/AddressList/AddressList";
 
 import Icon from "../../assets/images/Icons";
 import "./SearchContainer.scss";
-
-const buttonStyles = makeStyles({
-    root: {
-        width: "50%",
-        height: "48px",
-        marginLeft: "8px",
-        marginRight: "8px",
-        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-        border: 0,
-        borderRadius: 15,
-        boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-        color: "white",
-        padding: "0 30px",
-        zIndex: "1500",
-        pointerEvents: "auto"
-    },
-});
+import Category from "../../components/Category/Category";
 
 const SearchContainer = ({ location, setLocation }) => {
-    const buttonStyle = buttonStyles();
     const [address, setAddress, addressChange] = useInput("");
     const [
         searchFocus,
@@ -83,25 +64,7 @@ const SearchContainer = ({ location, setLocation }) => {
             <div className="on-search" onClick={() => setSeen(!seen)}>
                 <Icon>{seen ? "arrow-left" : "arrow-right"}</Icon>
             </div>
-            <div className="location-button">
-                <ButtonBase
-                    id="location-button"
-                    className={buttonStyle.root}
-                    data-latitude={location.latitude}
-                    data-longitude={location.longitude}
-                    onClick={(e) => {
-                        setLocation({
-                            latitude: e.target.dataset.latitude,
-                            longitude: e.target.dataset.longitude,
-                        });
-                    }}
-                >
-                    현재위치 지정
-                </ButtonBase>
-                <ButtonBase id="confirm-button" className={buttonStyle.root}>
-                    검사
-                </ButtonBase>
-            </div>
+            <Category></Category>
         </div>
     );
 };

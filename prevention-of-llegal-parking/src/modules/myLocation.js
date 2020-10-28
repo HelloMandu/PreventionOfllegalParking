@@ -1,16 +1,19 @@
 import { createAction, handleActions } from "redux-actions";
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { delay, call, put, takeLatest } from "redux-saga/effects";
 
-import { roadToPosition } from "../api/RoadToPosition";
+import { startLoading, finishLoading } from "./loading";
+import { roadToPosition } from "../api/roadToPosition";
+import {
+    setCCTVSaga,
+    setChildrenSaga,
+    setParkingLotSaga,
+} from "../modules/parkLocation";
 
 const SET_LOCATION = "location/SET_LOCATION";
 const SET_LOCATION_SAGA = "location/SET_LOCATION_SAGA";
 const ROAD_TO_POSITION = "location/ROAD_TO_POSITION";
 
-export const setLocation = createAction(
-    SET_LOCATION,
-    (newLocation) => newLocation
-);
+const setLocation = createAction(SET_LOCATION, (newLocation) => newLocation);
 export const setLocationSaga = createAction(
     SET_LOCATION_SAGA,
     (newLocation) => newLocation
@@ -21,15 +24,22 @@ export const roadToPositionSaga = createAction(
 );
 
 function* setLocationAsync(action) {
-    yield delay(300);
     yield put(setLocation(action.payload));
+    yield put(setCCTVSaga(action.payload));
+    yield put(setChildrenSaga(action.payload));
+    yield put(setParkingLotSaga(action.payload));
 }
 
 function* setRoadToPosition(action) {
     try {
+        yield put(startLoading());
         const response = yield call(roadToPosition, action.payload);
         const { lat: latitude, lng: longitude } = response;
         yield put(setLocation({ latitude, longitude }));
+        yield put(setCCTVSaga({ latitude, longitude }));
+        yield put(setChildrenSaga({ latitude, longitude }));
+        yield put(setParkingLotSaga({ latitude, longitude }));
+        yield put(finishLoading());
     } catch (e) {
         console.log(e);
     }

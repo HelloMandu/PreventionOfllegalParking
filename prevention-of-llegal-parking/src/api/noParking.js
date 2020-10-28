@@ -1,9 +1,9 @@
 import { get } from "axios";
 
-const range = 1000;
+const range = 3000;
 
 export const getCCTV = async ({ latitude, longitude }) => {
-    const response = await get("routes/busan-cctv", {
+    const response = get("routes/busan-cctv", {
         params: {
             latitude: latitude,
             longitude: longitude,
@@ -14,7 +14,7 @@ export const getCCTV = async ({ latitude, longitude }) => {
 };
 
 export const getParkingLot = async ({ latitude, longitude }) => {
-    const response = await get("routes/busan-parkinglot", {
+    const response = get("routes/busan-parkinglot", {
         params: {
             latitude: latitude,
             longitude: longitude,
@@ -25,7 +25,7 @@ export const getParkingLot = async ({ latitude, longitude }) => {
 };
 
 export const getChildren = async ({ latitude, longitude }) => {
-    const response = await get("routes/busan-children", {
+    const response = get("routes/busan-children", {
         params: {
             latitude: latitude,
             longitude: longitude,

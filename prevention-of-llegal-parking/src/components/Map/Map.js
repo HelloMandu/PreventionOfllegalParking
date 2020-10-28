@@ -1,21 +1,13 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { console } from "window-or-global";
 
-import {drawMap, drawLocation, drawBusan} from './draw';
+import {drawMap} from './draw';
 
 import "./Map.scss";
 
-const Map = ({ pageType, location }) => {
-    const parkLocation = useSelector(state => state.parkLocation);
+const Map = ({ location, setLocation, parkLocation }) => {
     useEffect(() => {
-        // drawMap(location);
-        // if (pageType === "location") {
-        //     console.log(parkLocation);
-        //     drawLocation(location, parkLocation);
-        // }
-        drawBusan(location);
-    }, [location, pageType]);
+        drawMap(location, setLocation, parkLocation);
+    }, [location, setLocation, parkLocation]);
     return <div id="kakaomap"></div>;
 };
 

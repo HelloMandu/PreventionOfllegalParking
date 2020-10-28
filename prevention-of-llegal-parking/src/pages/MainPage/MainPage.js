@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
-import useLocation from "../../hooks/useLocation";
+import React from "react";
 
 import SearchContainer from "../../containers/SearchContainer/SearchContainer";
 import LocationContainer from "../../containers/LocationContainer/LocationContainer";
 
+import useLocation from "../../hooks/useLocation";
+import LoadingModal from '../../components/Modal/LoadingModal';
+
 import "./MainPage.scss";
 
-const MainPage = ({ match }) => {
+const MainPage = () => {
     const [location, setLocation] = useLocation();
-    const { type } = match.params;
-    const [pageType, setPageType] = useState("index");
-    useEffect(() => {
-        setPageType(type);
-        console.log(type);
-    }, [type]);
     return (
         <div className="main-page">
             <SearchContainer
@@ -21,10 +17,10 @@ const MainPage = ({ match }) => {
                 setLocation={setLocation}
             ></SearchContainer>
             <LocationContainer
-                pageType={pageType}
                 location={location}
                 setLocation={setLocation}
             ></LocationContainer>
+            <LoadingModal></LoadingModal>
         </div>
     );
 };
