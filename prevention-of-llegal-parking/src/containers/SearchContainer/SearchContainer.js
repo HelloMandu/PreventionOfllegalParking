@@ -13,7 +13,7 @@ import Icon from "../../assets/images/Icons";
 import "./SearchContainer.scss";
 import Category from "../../components/Category/Category";
 
-const SearchContainer = ({ location, setLocation }) => {
+const SearchContainer = ({ location, setLocation, filterParkLocation }) => {
     const [address, setAddress, addressChange] = useInput("");
     const [
         searchFocus,
@@ -64,7 +64,7 @@ const SearchContainer = ({ location, setLocation }) => {
             <div className="on-search" onClick={() => setSeen(!seen)}>
                 <Icon>{seen ? "arrow-left" : "arrow-right"}</Icon>
             </div>
-            <Category></Category>
+            <Category filterParkLocation={filterParkLocation}></Category>
         </div>
     );
 };

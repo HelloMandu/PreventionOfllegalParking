@@ -1,16 +1,17 @@
-import root, { console } from "window-or-global";
+import root from "window-or-global";
 
 import CarIcon from "../../assets/images/car_icon.png";
-import CCTV from '../../assets/images/cctv-save.png';
-import Children from '../../assets/images/children-save.png';
-import ParkingLot from '../../assets/images/parking-save.png';
+import CCTV from "../../assets/images/cctv-save.png";
+import Children from "../../assets/images/children-save.png";
+import ParkingLot from "../../assets/images/parking-save.png";
 
 const { kakao } = root;
 
 export const drawMap = (
     location,
     setLocation,
-    { cctv, children, parkinglot }
+    { cctv, children, parkinglot },
+    filterState
 ) => {
     const container = document.getElementById("kakaomap");
     const markerImage = new kakao.maps.MarkerImage(
@@ -46,60 +47,78 @@ export const drawMap = (
     map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
     kakao.maps.event.addListener(map, "zoom_changed", () => {});
 
-    const parkingImage = ParkingLot;
-    parkinglot.forEach((location) => {
-        const imageSize = new kakao.maps.Size(24, 35);
-        // 마커 이미지를 생성합니다
-        const markerImage = new kakao.maps.MarkerImage(parkingImage, imageSize);
+    if (filterState === 1 || filterState === 2) {
+        const cctvImage = CCTV;
+        // const cctvImage = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+        cctv.forEach((location) => {
+            const imageSize = new kakao.maps.Size(24, 35);
+            // 마커 이미지를 생성합니다
+            const markerImage = new kakao.maps.MarkerImage(
+                cctvImage,
+                imageSize
+            );
 
-        const markerPosition = new kakao.maps.LatLng(
-            location.LATITUDE,
-            location.LONGITUDE
-        ); // 마커가 표시될 위치입니다
-        // 마커를 생성합니다
-        const marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: markerPosition, // 마커를 표시할 위치
-            title: "parkingLot", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image: markerImage, // 마커 이미지
+            const markerPosition = new kakao.maps.LatLng(
+                location.LATITUDE,
+                location.LONGITUDE
+            ); // 마커가 표시될 위치입니다
+            // 마커를 생성합니다
+            const marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: markerPosition, // 마커를 표시할 위치
+                title: "cctv", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image: markerImage, // 마커 이미지
+            });
         });
-    })
+    }
 
-    const childrenImage = Children;
-    children.forEach((location) => {
-        const imageSize = new kakao.maps.Size(24, 35);
-        // 마커 이미지를 생성합니다
-        const markerImage = new kakao.maps.MarkerImage(childrenImage, imageSize);
+    if (filterState === 1 || filterState === 3) {
+        const childrenImage = Children;
+        children.forEach((location) => {
+            const imageSize = new kakao.maps.Size(24, 35);
+            // 마커 이미지를 생성합니다
+            const markerImage = new kakao.maps.MarkerImage(
+                childrenImage,
+                imageSize
+            );
 
-        const markerPosition = new kakao.maps.LatLng(
-            location.LATITUDE,
-            location.LONGITUDE
-        ); // 마커가 표시될 위치입니다
-        // 마커를 생성합니다
-        const marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: markerPosition, // 마커를 표시할 위치
-            title: "children", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image: markerImage, // 마커 이미지
+            const markerPosition = new kakao.maps.LatLng(
+                location.LATITUDE,
+                location.LONGITUDE
+            ); // 마커가 표시될 위치입니다
+            // 마커를 생성합니다
+            const marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: markerPosition, // 마커를 표시할 위치
+                title: "children", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image: markerImage, // 마커 이미지
+            });
         });
-    })
+    }
 
-    const cctvImage = CCTV;
-    cctv.forEach((location) => {
-        const imageSize = new kakao.maps.Size(24, 35);
-        // 마커 이미지를 생성합니다
-        const markerImage = new kakao.maps.MarkerImage(cctvImage, imageSize);
+    if (filterState === 1 || filterState === 4) {
+        const parkingImage = ParkingLot;
+        parkinglot.forEach((location) => {
+            const imageSize = new kakao.maps.Size(24, 35);
+            // 마커 이미지를 생성합니다
+            const markerImage = new kakao.maps.MarkerImage(
+                parkingImage,
+                imageSize
+            );
 
-        const markerPosition = new kakao.maps.LatLng(
-            location.LATITUDE,
-            location.LONGITUDE
-        ); // 마커가 표시될 위치입니다
-        // 마커를 생성합니다
-        const marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: markerPosition, // 마커를 표시할 위치
-            title: "cctv", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image: markerImage, // 마커 이미지
+            const markerPosition = new kakao.maps.LatLng(
+                location.LATITUDE,
+                location.LONGITUDE
+            ); // 마커가 표시될 위치입니다
+            // 마커를 생성합니다
+            const marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: markerPosition, // 마커를 표시할 위치
+                title: "parkingLot", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image: markerImage, // 마커 이미지
+            });
         });
-    })
+    }
 };
+
+// export const drawParkLocation = () => {};

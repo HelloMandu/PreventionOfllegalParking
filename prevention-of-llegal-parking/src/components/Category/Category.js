@@ -1,8 +1,8 @@
 import React from "react";
 
-import Icons from '../../assets/images/Icons';
+import Icons from "../../assets/images/Icons";
 
-import './Category.scss'
+import "./Category.scss";
 
 const CategoryItem = ({ title, icon }) => {
     return (
@@ -15,7 +15,7 @@ const CategoryItem = ({ title, icon }) => {
     );
 };
 
-const Category = () => {
+const Category = ({ filterParkLocation }) => {
     const category = [
         {
             id: 1,
@@ -41,7 +41,13 @@ const Category = () => {
     return (
         <ul className="category">
             {category.map(({ id, title, icon }) => (
-                <li key={id} className="category-item">
+                <li
+                    key={id}
+                    className="category-item"
+                    onClick={() => {
+                        filterParkLocation(id);
+                    }}
+                >
                     <CategoryItem title={title} icon={icon}></CategoryItem>
                 </li>
             ))}
