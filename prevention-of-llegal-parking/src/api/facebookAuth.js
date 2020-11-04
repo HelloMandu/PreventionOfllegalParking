@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { auth } from '../modules/firebase';
+import { auth } from './firebase';
 
 let provider = new firebase.auth.FacebookAuthProvider();
 

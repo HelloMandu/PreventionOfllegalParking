@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { auth, firestore } from '../modules/firebase';
+import { auth } from './firebase';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });

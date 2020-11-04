@@ -3,8 +3,7 @@ import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { console } from 'window-or-global';
 
-const Logout = () => {
-    let user = firebase.auth().currentUser;
+const Logout = ({ user }) => {
     const history = useHistory();
     if (user === null) {
         console.log('user 정보 없음');
@@ -23,7 +22,6 @@ const Logout = () => {
                 // An error happened.
             });
     }
-    // }, []);
     return <></>;
 };
 
