@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import MainPage from './pages/MainPage/MainPage';
 import AuthPage from './pages/AuthPage/AuthPage';
-import Logout from './test/logout';
+import SignOut from './test/SignOut';
 
 import './SCSS/index.scss';
 import { auth } from './modules/firebase';
@@ -21,8 +21,8 @@ const App = () => {
         <>
             <Switch>
                 <Route path={`/`} exact={true} component={MainPage}></Route>
-                <Route path={`/auth`} component={AuthPage}></Route>
-                <Route path={`/logout`} component={Logout}></Route>
+                <Route path={`/signIn`} component={AuthPage}></Route>
+                <Route path={`/signOut`} component={SignOut}></Route>
             </Switch>
         </>
     );
