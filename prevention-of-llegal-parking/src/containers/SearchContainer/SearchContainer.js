@@ -1,17 +1,17 @@
-import React, { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import cn from "classnames";
+import React, { useState, useCallback } from 'react'
+import { useDispatch } from 'react-redux'
+import cn from 'classnames'
 
-import { roadToPositionSaga } from "../../modules/myLocation";
-import useInput from "../../hooks/useInput";
-import useSearch from "../../hooks/useSearch";
+import { roadToPositionSaga } from '../../modules/myLocation'
+import useInput from '../../hooks/useInput'
+import useSearch from '../../hooks/useSearch'
 
-import Search from "../../components/Search/Search";
-import AddressList from "../../components/AddressList/AddressList";
+import Search from '../../components/Search/Search'
+import AddressList from '../../components/AddressList/AddressList'
 
-import Icon from "../../assets/images/Icons";
-import "./SearchContainer.scss";
-import Category from "../../components/Category/Category";
+import Icon from '../../assets/images/Icons'
+import './SearchContainer.scss'
+import Category from '../../components/Category/Category'
 
 const SearchContainer = ({ location, setLocation }) => {
     const [address, setAddress, addressChange] = useInput("");
@@ -62,4 +62,4 @@ const SearchContainer = ({ location, setLocation }) => {
     );
 };
 
-export default SearchContainer;
+export default SearchContainer
