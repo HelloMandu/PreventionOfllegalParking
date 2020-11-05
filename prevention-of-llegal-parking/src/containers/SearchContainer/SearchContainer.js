@@ -13,7 +13,7 @@ import Icon from "../../assets/images/Icons";
 import "./SearchContainer.scss";
 import Category from "../../components/Category/Category";
 
-const SearchContainer = ({ location, setLocation, filterParkLocation }) => {
+const SearchContainer = ({ location, setLocation }) => {
     const [address, setAddress, addressChange] = useInput("");
     const [
         searchFocus,
@@ -21,7 +21,6 @@ const SearchContainer = ({ location, setLocation, filterParkLocation }) => {
         setSearchFocus,
         handleSearchList,
     ] = useSearch(address);
-    const [seen, setSeen] = useState(true);
     const [searched, setSearched] = useState(false);
     const dispatch = useDispatch();
     const roadToPosition = useCallback(
@@ -40,19 +39,17 @@ const SearchContainer = ({ location, setLocation, filterParkLocation }) => {
     );
 
     return (
-        <div className={cn("search-container", { seen })}>
-            <div className="search-header">
-                <Search
-                    address={address}
-                    addressChange={addressChange}
-                    setSearched={setSearched}
-                    searchFocus={searchFocus}
-                    searchList={searchList}
-                    setSearchFocus={setSearchFocus}
-                    handleSearchList={handleSearchList}
-                    handleSearchItem={handleSearchItem}
-                ></Search>
-            </div>
+        <div className="search-container">
+            <Search
+                address={address}
+                addressChange={addressChange}
+                setSearched={setSearched}
+                searchFocus={searchFocus}
+                searchList={searchList}
+                setSearchFocus={setSearchFocus}
+                handleSearchList={handleSearchList}
+                handleSearchItem={handleSearchItem}
+            ></Search>
             {searched && (
                 <AddressList
                     searchList={searchList}
@@ -61,10 +58,6 @@ const SearchContainer = ({ location, setLocation, filterParkLocation }) => {
                     handleSearchItem={handleSearchItem}
                 ></AddressList>
             )}
-            <div className="on-search" onClick={() => setSeen(!seen)}>
-                <Icon>{seen ? "arrow-left" : "arrow-right"}</Icon>
-            </div>
-            <Category filterParkLocation={filterParkLocation}></Category>
         </div>
     );
 };

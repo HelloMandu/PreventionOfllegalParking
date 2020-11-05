@@ -1,16 +1,13 @@
 import React, { useEffect } from "react";
-
-import {drawMap, drawParkLocation} from './draw';
+import { drawMap } from "./draw";
 
 import "./Map.scss";
 
-const Map = ({ location, setLocation, parkLocation, filterState }) => {
-    useEffect(()=>{
-        drawMap(location, setLocation, parkLocation, filterState);
-    }, [location, setLocation, parkLocation, filterState])
-    // useEffect(() => {
-    //     drawParkLocation(parkLocation, filterState);
-    // }, [parkLocation, filterState]);
+const Map = ({ location, setLocation, parkLocation }) => {
+    useEffect(() => {
+        drawMap(location, setLocation, parkLocation);
+    }, [location, setLocation, parkLocation]);
+
     return <div id="kakaomap"></div>;
 };
 

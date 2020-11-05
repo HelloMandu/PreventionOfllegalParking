@@ -14,11 +14,9 @@ const LoadingModal = () => {
     const classes = useStyles();
     const loading = useSelector((state) => state.loading.isLoading);
     return (
-        <div>
-            <Backdrop className={classes.backdrop} open={loading}>
-                <CircularProgress color="inherit" />
-            </Backdrop>
-        </div>
+        <Backdrop className={classes.backdrop} open={loading}>
+            <CircularProgress color="inherit" />
+        </Backdrop>
     );
 };
 

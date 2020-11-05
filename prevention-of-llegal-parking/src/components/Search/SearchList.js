@@ -22,25 +22,27 @@ const SearchList = ({ searchList, handleSearchItem, setSearchFocus }) => {
         return null;
     }
     return (
-        <ul
-            className="search-list"
-            onClick={() => {
-                setTimeout(() => setSearchFocus(false), 100);
-            }}
-        >
-            {searchList.map(({ bdNm, roadAddr }) => {
-                listKey.current += 1;
-                return (
-                    <li key={listKey.current}>
-                        <SearchItem
-                            title={bdNm}
-                            address={roadAddr}
-                            onClick={handleSearchItem}
-                        ></SearchItem>
-                    </li>
-                );
-            })}
-        </ul>
+        <div className="search-list-container">
+            <ul
+                className="search-list"
+                onClick={() => {
+                    setTimeout(() => setSearchFocus(false), 100);
+                }}
+            >
+                {searchList.map(({ bdNm, roadAddr }) => {
+                    listKey.current += 1;
+                    return (
+                        <li key={listKey.current}>
+                            <SearchItem
+                                title={bdNm}
+                                address={roadAddr}
+                                onClick={handleSearchItem}
+                            ></SearchItem>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
     );
 };
 
