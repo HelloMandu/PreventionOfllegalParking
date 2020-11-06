@@ -39,9 +39,9 @@ const ParkLocListContainer = ({
     const parkLocation = useSelector((state) => state.parkLocation);
     useEffect(() => {
         const paginationBullet = document.querySelector(".parkloc-swiper");
-        for (let i = 0; i < category.length; i++) {
+        for (let i = 0; i < category.length - 1; i++) {
             paginationBullet.firstChild.children[i].innerHTML =
-                category[i].title;
+                category[i + 1].title;
         }
     }, []);
     return (
@@ -63,12 +63,6 @@ const ParkLocListContainer = ({
                 pagination={{ clickable: true }}
                 loop
             >
-                <SwiperSlide className="parkloc-swiper-list">
-                    <ParkLocList
-                        parkLocation={parkLocation}
-                        type={"all"}
-                    ></ParkLocList>
-                </SwiperSlide>
                 <SwiperSlide className="parkloc-swiper-list">
                     <ParkLocList
                         parkLocation={parkLocation.cctv}

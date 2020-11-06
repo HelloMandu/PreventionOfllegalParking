@@ -74,51 +74,51 @@ const ParkLocList = ({ parkLocation, type }) => {
             </ul>
         );
     }
-    else{
-        return (
-            <ul className="parkloc-list">
-                {parkLocation.cctv.map(({ GUBUN, ADDR_ROAD, PIXEL, DISTANCE }) => {
-                    id.current += 1;
-                    return (
-                        <li key={id.current}>
-                            <ParkLocItem
-                                title={GUBUN}
-                                address={ADDR_ROAD}
-                                feature={`${PIXEL}pixel`}
-                                distance={DISTANCE}
-                            ></ParkLocItem>
-                        </li>
-                    );
-                })}
-                {parkLocation.children.map(({ TYPE_NAME, ADDR_ROAD, TYPE, DISTANCE }) => {
-                    id.current += 1;
-                    return (
-                        <li key={id.current}>
-                            <ParkLocItem
-                                title={TYPE_NAME}
-                                address={ADDR_ROAD}
-                                feature={TYPE}
-                                distance={DISTANCE}
-                            ></ParkLocItem>
-                        </li>
-                    );
-                })}
-                {parkLocation.parkinglot.map(({ NAME, ADDR_JIBUN, TYPE, DISTANCE }) => {
-                    id.current += 1;
-                    return (
-                        <li key={id.current}>
-                            <ParkLocItem
-                                title={NAME}
-                                address={ADDR_JIBUN}
-                                feature={`${TYPE}주차장`}
-                                distance={DISTANCE}
-                            ></ParkLocItem>
-                        </li>
-                    );
-                })}
-            </ul>
-        );
-    }
+    // else{
+    //     return (
+    //         <ul className="parkloc-list">
+    //             {parkLocation.cctv.map(({ GUBUN, ADDR_ROAD, PIXEL, DISTANCE }) => {
+    //                 id.current += 1;
+    //                 return (
+    //                     <li key={id.current}>
+    //                         <ParkLocItem
+    //                             title={GUBUN}
+    //                             address={ADDR_ROAD}
+    //                             feature={`${PIXEL}pixel`}
+    //                             distance={DISTANCE}
+    //                         ></ParkLocItem>
+    //                     </li>
+    //                 );
+    //             })}
+    //             {parkLocation.children.map(({ TYPE_NAME, ADDR_ROAD, TYPE, DISTANCE }) => {
+    //                 id.current += 1;
+    //                 return (
+    //                     <li key={id.current}>
+    //                         <ParkLocItem
+    //                             title={TYPE_NAME}
+    //                             address={ADDR_ROAD}
+    //                             feature={TYPE}
+    //                             distance={DISTANCE}
+    //                         ></ParkLocItem>
+    //                     </li>
+    //                 );
+    //             })}
+    //             {parkLocation.parkinglot.map(({ NAME, ADDR_JIBUN, TYPE, DISTANCE }) => {
+    //                 id.current += 1;
+    //                 return (
+    //                     <li key={id.current}>
+    //                         <ParkLocItem
+    //                             title={NAME}
+    //                             address={ADDR_JIBUN}
+    //                             feature={`${TYPE}주차장`}
+    //                             distance={DISTANCE}
+    //                         ></ParkLocItem>
+    //                     </li>
+    //                 );
+    //             })}
+    //         </ul>
+    //     );
+    // }
 };
 
 export default React.memo(ParkLocList);

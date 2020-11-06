@@ -5,7 +5,7 @@ import ParkLocListContainer from "../../containers/ParkLocListContainer/ParkLocL
 
 import Category from "../../components/Category/Category";
 import MyLocation from "../../components/MyLocation/MyLocation";
-import ParkLocButton from '../../components/ParkLocList/ParkLocButton';
+import ParkLocButton from "../../components/ParkLocList/ParkLocButton";
 
 import useLocation from "../../hooks/useLocation";
 import useToggle from "../../hooks/useToggle";
@@ -19,10 +19,7 @@ const MainPage = () => {
 
     return (
         <div className="main-page">
-            <SearchContainer
-                location={location}
-                setLocation={setLocation}
-            ></SearchContainer>
+            <SearchContainer></SearchContainer>
             <LocationContainer
                 location={location}
                 setLocation={setLocation}
@@ -30,7 +27,9 @@ const MainPage = () => {
             ></LocationContainer>
             <Category setType={setType}></Category>
             <MyLocation></MyLocation>
-            <ParkLocButton handleParkLocListToggle={handleParkLocListToggle}></ParkLocButton>
+            <ParkLocButton
+                handleParkLocListToggle={handleParkLocListToggle}
+            ></ParkLocButton>
             <ParkLocListContainer
                 parkLocListToggle={parkLocListToggle}
                 handleParkLocListToggle={handleParkLocListToggle}

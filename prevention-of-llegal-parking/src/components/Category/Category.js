@@ -42,7 +42,6 @@ const Category = ({ setType }) => {
                         className="category-item"
                         onClick={() => {
                             setType(id);
-                            console.log(id);
                         }}
                     >
                         <CategoryItem icon={icon}></CategoryItem>

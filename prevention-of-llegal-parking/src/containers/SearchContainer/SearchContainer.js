@@ -1,24 +1,31 @@
-import React, { useState, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
 
-import { roadToPositionSaga } from '../../modules/myLocation'
-import useInput from '../../hooks/useInput'
-import useSearch from '../../hooks/useSearch'
+import { roadToPositionSaga } from "../../modules/myLocation";
+import useSearch from "../../hooks/useSearch";
 
-import Search from '../../components/Search/Search'
-import AddressList from '../../components/AddressList/AddressList'
+import Search from "../../components/Search/Search";
+import AddressList from "../../components/AddressList/AddressList";
 
-import './SearchContainer.scss'
+import "./SearchContainer.scss";
 
-const SearchContainer = ({ location, setLocation }) => {
-    const [address, setAddress, addressChange] = useInput("");
+const SearchContainer = () => {
+    const [searched, setSearched] = useState(false);
+    const [address, setAddress] = useState("");
     const [
         searchFocus,
         searchList,
         setSearchFocus,
         handleSearchList,
     ] = useSearch(address);
-    const [searched, setSearched] = useState(false);
+    const addressChange = useCallback(
+        (e) => {
+            setAddress(e.target.value);
+            setSearchFocus(true);
+            setSearched(false);
+        },
+        [setAddress, setSearchFocus]
+    );
     const dispatch = useDispatch();
     const roadToPosition = useCallback(
         (road) => {
@@ -59,4 +66,4 @@ const SearchContainer = ({ location, setLocation }) => {
     );
 };
 
-export default SearchContainer
+export default SearchContainer;

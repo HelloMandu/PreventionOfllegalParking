@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getAddress } from "../api/address";
 
 const getSearchList = async (text) => {
@@ -9,13 +9,16 @@ const getSearchList = async (text) => {
 const useSearch = (text) => {
     const [searchFocus, setSearchFocus] = useState(false);
     const [searchList, setSearchList] = useState([]);
-    const handleSearchList = async (text) => {
-        const newSearchList = await getSearchList(text);
-        setSearchList(newSearchList);
-    };
+    const handleSearchList = useCallback(
+        async (text) => {
+            const newSearchList = await getSearchList(text);
+            setSearchList(newSearchList);
+        },
+        [setSearchList]
+    );
     useEffect(() => {
         handleSearchList(text);
-    }, [text]);
+    }, [text, handleSearchList]);
     return [searchFocus, searchList, setSearchFocus, handleSearchList];
 };
 

@@ -17,6 +17,16 @@ const Search = (props) => {
         handleSearchList,
         handleSearchItem,
     } = props;
+    const onClickSearch = () => {
+        handleSearchList(address);
+        setSearched(true);
+        setSearchFocus(false);
+    };
+    const onKeyPressSearch = (e) => {
+        if (e.key === "Enter") {
+            onClickSearch();
+        }
+    };
     return (
         <div className="searchbar">
             <input
@@ -25,23 +35,14 @@ const Search = (props) => {
                 placeholder="장소, 주소, 주차장 검색"
                 value={address}
                 onChange={addressChange}
-                onFocus={() => {
-                    setSearchFocus(true);
-                    setSearched(false);
-                }}
+                onKeyPress={onKeyPressSearch}
             />
-            <button
-                className="search-click"
-                onClick={() => {
-                    handleSearchList(address);
-                    setSearched(true);
-                    setSearchFocus(false);
-                }}
-            >
+            <button className="search-click" onClick={onClickSearch}>
                 <Icon>{"search"}</Icon>
             </button>
             {searchFocus && (
                 <SearchList
+                    address={address}
                     searchList={searchList}
                     handleSearchItem={handleSearchItem}
                     handleSearchToggle={setSearchFocus}

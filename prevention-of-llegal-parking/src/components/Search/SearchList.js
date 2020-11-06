@@ -16,9 +16,14 @@ const SearchItem = ({ title, address, onClick }) => {
     );
 };
 
-const SearchList = ({ searchList, handleSearchItem, setSearchFocus }) => {
+const SearchList = ({
+    address,
+    searchList,
+    handleSearchItem,
+    setSearchFocus,
+}) => {
     const listKey = useRef(0);
-    if (searchList === null || searchList.length === 0) {
+    if (address === "" || searchList === null || searchList.length === 0) {
         return null;
     }
     return (
