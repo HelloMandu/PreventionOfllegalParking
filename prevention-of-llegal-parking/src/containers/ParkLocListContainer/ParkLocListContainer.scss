@@ -2,13 +2,14 @@
     position: absolute;
     width: 95%;
     height: 100%;
-    bottom: 0px;
+    top: 0px;
     background-color: white;
     z-index: 3000;
     box-shadow: 1px 1px 3px;
     transition: all .3s ease-in;
     border-radius: 24px;
     margin: 0 2.5%;
+    padding: 8px 0px;
     .swiper-header{
         display: flex;
         justify-content: space-between;
@@ -59,6 +60,6 @@
 }
 
 .onSwiper{
-    bottom: -800px;
+    top: 800px;
     transition: all .3s ease-in;
 }

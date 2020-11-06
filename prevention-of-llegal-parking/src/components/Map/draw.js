@@ -12,6 +12,8 @@ export const drawMap = (
     location,
     setLocation,
     type,
+    mapLevel,
+    mapType,
     { cctv, children, parkinglot }
 ) => {
     const container = document.getElementById("kakaomap");
@@ -23,7 +25,7 @@ export const drawMap = (
 
     const options = {
         center: new kakao.maps.LatLng(location.latitude, location.longitude),
-        level: 1,
+        level: mapLevel.current,
     };
 
     const map = new kakao.maps.Map(container, options); // 지도생성
@@ -36,6 +38,7 @@ export const drawMap = (
         position: markerPosition, // 지도 중심좌표에 마커를 생성합니다
         image: markerImage,
     });
+
     marker.setMap(map); // 마커생성
 
     kakao.maps.event.addListener(map, "click", (mouseEvent) => {
@@ -44,12 +47,21 @@ export const drawMap = (
         setLocation({ latitude: latlng.Ja, longitude: latlng.Ia });
     });
 
-    // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
     const zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
-    kakao.maps.event.addListener(map, "zoom_changed", () => {});
+    kakao.maps.event.addListener(map, "zoom_changed", () => {
+        mapLevel.current = map.getLevel();
+    });
     const mapTypeControl = new kakao.maps.MapTypeControl();
     map.addControl(mapTypeControl, kakao.maps.ControlPosition.BOTTOMLEFT);
+    kakao.maps.event.addListener(map, "maptypeid_changed", () => {
+        mapType.current = map.getMapTypeId();
+    });
+    if (mapType.current === 1) {
+        map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
+    } else {
+        map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+    }
 
     if (type === 1) {
         drawMarker(map, children, childrenMarker, 1);
@@ -67,13 +79,11 @@ export const drawMap = (
 const drawMarker = (map, locations, image) => {
     locations.forEach((location) => {
         const imageSize = new kakao.maps.Size(28, 38);
-        // 마커 이미지를 생성합니다
         const markerImage = new kakao.maps.MarkerImage(image, imageSize);
         const markerPosition = new kakao.maps.LatLng(
             location.LATITUDE,
             location.LONGITUDE
-        ); // 마커가 표시될 위치입니다
-        // 마커를 생성합니다
+        );
         const marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
             position: markerPosition, // 마커를 표시할 위치
