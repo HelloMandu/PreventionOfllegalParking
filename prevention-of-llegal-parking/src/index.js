@@ -8,7 +8,6 @@ import createSageMiddleware from "redux-saga";
 // import {createLogger} from 'redux-logger';
 
 import App from "./App";
-import "./index.css";
 import rootReducer, {rootSaga} from "./modules";
 import * as serviceWorker from "./serviceWorker";
 

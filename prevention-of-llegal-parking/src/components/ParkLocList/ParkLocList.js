@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { useEffect } from "react";
 
 import "./ParkLocList.scss";
 

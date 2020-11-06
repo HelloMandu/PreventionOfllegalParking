@@ -3,12 +3,11 @@ import { drawMap } from "./draw";
 
 import "./Map.scss";
 
-const Map = ({ location, setLocation, parkLocation }) => {
+const Map = ({ location, setLocation, parkLocation, type }) => {
     useEffect(() => {
-        drawMap(location, setLocation, parkLocation);
-    }, [location, setLocation, parkLocation]);
-
+        drawMap(location, setLocation, type, parkLocation);
+    }, [location, setLocation, parkLocation, type]);
     return <div id="kakaomap"></div>;
 };
 
-export default Map;
+export default React.memo(Map);

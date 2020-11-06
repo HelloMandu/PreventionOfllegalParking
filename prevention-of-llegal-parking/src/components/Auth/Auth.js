@@ -1,10 +1,7 @@
-import React, { useState, useReducer, useCallback, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import firebase from 'firebase';
+import React, { useState, useReducer, useCallback } from 'react';
 import { signInWithFacebook } from '../../api/facebookAuth';
 import { signInWithGithub } from '../../api/githubAuth';
 import { signInWithGoogle } from '../../api/googleAuth';
-import { useFirebase } from 'react-redux-firebase';
 
 import './Auth.scss';
 

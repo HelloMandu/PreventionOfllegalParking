@@ -21,7 +21,6 @@ export const getParkingLot = async ({ latitude, longitude }) => {
             range: range,
         },
     });
-    console.log(response);
     return response.data;
 };
 

@@ -7,13 +7,13 @@ provider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => {
     auth.signInWithPopup(provider)
         .then((res) => {
-            let token = res.credential.accessToken;
-            let user = res.user;
+            // let token = res.credential.accessToken;
+            // let user = res.user;
         })
         .catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            var email = error.email;
-            var credential = error.credential;
+            // var errorCode = error.code;
+            // var errorMessage = error.message;
+            // var email = error.email;
+            // var credential = error.credential;
         });
 };

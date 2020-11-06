@@ -14,7 +14,7 @@ const CategoryItem = ({ icon }) => {
     );
 };
 
-const Category = ({ handleParkLocListToggle }) => {
+const Category = ({ setType }) => {
     const category = [
         {
             id: 1,
@@ -40,7 +40,10 @@ const Category = ({ handleParkLocListToggle }) => {
                     <li
                         key={id}
                         className="category-item"
-                        onClick={()=>{handleParkLocListToggle(id)}}
+                        onClick={() => {
+                            setType(id);
+                            console.log(id);
+                        }}
                     >
                         <CategoryItem icon={icon}></CategoryItem>
                     </li>

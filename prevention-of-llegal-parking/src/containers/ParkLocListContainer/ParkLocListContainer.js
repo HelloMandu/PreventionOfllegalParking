@@ -23,7 +23,7 @@ const category = [
     },
     {
         id: 3,
-        title: "어린이보호구역",
+        title: "보호구역",
     },
     {
         id: 4,
@@ -34,7 +34,6 @@ const category = [
 const ParkLocListContainer = ({
     parkLocListToggle,
     handleParkLocListToggle,
-    type
 }) => {
     SwiperCore.use([Pagination]);
     const parkLocation = useSelector((state) => state.parkLocation);
@@ -53,7 +52,7 @@ const ParkLocListContainer = ({
                 <h1 className="swiper-title">목록보기</h1>
                 <div
                     className="swiper-down-button"
-                    onClick={()=>handleParkLocListToggle(0)}
+                    onClick={handleParkLocListToggle}
                 >
                     <Icons>{"arrow-down"}</Icons>
                 </div>
@@ -62,7 +61,6 @@ const ParkLocListContainer = ({
                 className="parkloc-swiper"
                 slidesPerView={1}
                 pagination={{ clickable: true }}
-                initialSlide={type}
                 loop
             >
                 <SwiperSlide className="parkloc-swiper-list">

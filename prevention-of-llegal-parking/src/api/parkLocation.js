@@ -1,6 +1,6 @@
 import { get } from "axios";
 
-const range = 3000;
+const range = 2000;
 
 export const getCCTV = async ({ latitude, longitude }) => {
     const response = await get("routes/busan-cctv", {
