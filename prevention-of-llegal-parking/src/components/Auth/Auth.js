@@ -1,9 +1,13 @@
-import React, { useState, useReducer, useCallback } from 'react';
+import React, { useState, useReducer, useCallback, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { signInWithFacebook } from '../../api/facebookAuth';
 import { signInWithGithub } from '../../api/githubAuth';
 import { signInWithGoogle } from '../../api/googleAuth';
 
 import './Auth.scss';
+
+import firebase from 'firebase';
+import { auth } from '../../api/firebase';
 
 function reducer(state, action) {
     return {
@@ -31,6 +35,13 @@ export default () => {
             // 로그인 페이지로 이동
         }
     }, [id, pw]);
+
+    const history = useHistory();
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) history.push('/');
+        });
+    }, [history]);
 
     return (
         <div className="container">

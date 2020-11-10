@@ -40,6 +40,9 @@ const Search = (props) => {
             <button className="search-click" onClick={onClickSearch}>
                 <Icon>{"search"}</Icon>
             </button>
+            <button className="login-click">
+                <Icon>{"login"}</Icon>
+            </button>
             {searchFocus && (
                 <SearchList
                     address={address}

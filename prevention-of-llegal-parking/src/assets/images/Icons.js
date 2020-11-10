@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import firebase from 'firebase';
+import { auth } from '../../api/firebase';
 
 const Icons = ({ onClick, children }) => {
+
+    const [currentUser, setState] = useState(false);
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            setState(user);
+        });
+        return () => setState(false);
+    }, []);
+
     switch (children) {
         case "home":
             return (
@@ -135,6 +148,29 @@ const Icons = ({ onClick, children }) => {
                 >
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+                </svg>
+            );
+        case "login":
+            return (!currentUser
+                ? <Link to={`/signIn`}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="icon"
+                        viewBox="0 0 24 24"
+                    >
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+                    </svg>
+                </Link >
+                :
+                <svg
+                    className="icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    onClick={() => { alert("로그아웃 되셨습니다."); firebase.auth().signOut(); }}
+                >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
                 </svg>
             );
         default:

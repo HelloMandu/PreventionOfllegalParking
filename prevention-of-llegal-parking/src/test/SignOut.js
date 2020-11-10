@@ -22,7 +22,7 @@ const Logout = ({ user }) => {
                 // An error happened.
             });
     }
-    return <></>;
+    return <>로그아웃</>;
 };
 
 export default Logout;
