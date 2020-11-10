@@ -6,7 +6,6 @@ import { signInWithGoogle } from '../../api/googleAuth';
 
 import './Auth.scss';
 
-import firebase from 'firebase';
 import { auth } from '../../api/firebase';
 
 function reducer(state, action) {
@@ -25,6 +24,9 @@ export default () => {
 
     const { id, pw } = state;
     const onChange = (e) => action(e.target);
+
+    const history = useHistory();
+
     const onClick = useCallback(() => {
         if (id !== '1234') {
             alert('아이디가 일치하지 않습니다');
@@ -32,16 +34,20 @@ export default () => {
             alert('비밀번호가 일치하지 않습니다.');
         } else {
             alert(id + '님 환영합니다.');
-            // 로그인 페이지로 이동
+            history.push('/');
         }
-    }, [id, pw]);
+    }, [id, pw, history]);
 
-    const history = useHistory();
-    useEffect(() => {
+    const userCheck = useCallback(() => {
         auth.onAuthStateChanged((user) => {
             if (user) history.push('/');
         });
-    }, [history]);
+    }, [history])
+
+    useEffect(() => {
+        userCheck();
+        return () => userCheck();
+    }, [userCheck]);
 
     return (
         <div className="container">
