@@ -53,12 +53,17 @@ const Search = (props) => {
             <button className="search-click" onClick={onClickSearch}>
                 <Icon>{"search"}</Icon>
             </button>
-            <button className="login-click">
+            <div className="login-div">
                 {!currentUser
-                    ? <Link to={`/signIn`}>로그인</Link>
-                    : <div onClick={() => { alert("로그아웃 되셨습니다."); firebase.auth().signOut(); }} >로그아웃</div>
+                    ? <Link to={`/signIn`}><img src={require('../../assets/images/login.svg')} className='login-click' alt="login" /></Link>
+                    : <img
+                        src={require('../../assets/images/logout.svg')}
+                        className='login-click'
+                        onClick={() => { alert("로그아웃 되셨습니다."); firebase.auth().signOut(); }}
+                        alt="logout"
+                    />
                 }
-            </button>
+            </div>
             {searchFocus && (
                 <SearchList
                     address={address}
