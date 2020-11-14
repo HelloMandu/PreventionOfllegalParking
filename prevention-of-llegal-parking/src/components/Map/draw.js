@@ -44,7 +44,9 @@ export const drawMap = (
     kakao.maps.event.addListener(map, "click", (mouseEvent) => {
         const latlng = mouseEvent.latLng;
         marker.setPosition(latlng);
-        setLocation({ latitude: latlng.Ja, longitude: latlng.Ia });
+        const latitude = latlng.Ma;
+        const longitude = latlng.La;
+        setLocation({ latitude, longitude });
     });
 
     const zoomControl = new kakao.maps.ZoomControl();
