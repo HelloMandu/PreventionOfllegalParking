@@ -15,7 +15,8 @@ const Map = ({ location, setLocation, parkLocation, type }) => {
             mapType,
             parkLocation
         );
-    }, [location, setLocation, parkLocation, type]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location, parkLocation.parkinglot, type]);
     return <div id="kakaomap"></div>;
 };
 

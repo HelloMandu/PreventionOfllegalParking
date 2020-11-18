@@ -9,6 +9,7 @@ const parkingLot = require('./routes/ParkingLot');
 const busanParkingLot = require('./routes/busanParkingLot');
 const busanChildren = require('./routes/busanChildren');
 const busanCCTV = require('./routes/busanCCTV');
+const canParking = require('./routes/CanParking');
 
 const app = new Koa();
 const router = new Router();
@@ -21,6 +22,7 @@ router.use('/routes', parkingLot.routes());
 router.use('/routes', busanParkingLot.routes());
 router.use('/routes', busanChildren.routes());
 router.use('/routes', busanCCTV.routes());
+router.use('/routes', canParking.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
 
