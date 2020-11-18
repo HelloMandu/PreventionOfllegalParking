@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { startCheck } from '../../modules/isCheck';
 
 const CheckContainer = () => {
-
     const reduxDispatch = useDispatch();
 
     const onClickCheck = () => {
