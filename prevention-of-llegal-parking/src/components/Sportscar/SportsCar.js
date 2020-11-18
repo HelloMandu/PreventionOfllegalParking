@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import cn from "classnames";
 import { useSelector, useDispatch } from "react-redux";
-import { Backdrop } from "@material-ui/core";
+import { Backdrop, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // import { getLocation } from '../../api/location';
@@ -12,6 +12,7 @@ import "./SportsCar.scss";
 import { finishCheck } from "../../modules/isCheck";
 import Success from "../../assets/images/Success";
 import Failure from "../../assets/images/Failure";
+import ResultContainer from "../../containers/ResultContainer/ResultContainer";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const SportsCar = () => {
     const [loading, setLoading] = useState(false);
     const [posible, setPosible] = useState(0);
+    const [click, setClick] = useState(false);
 
     const canParking = useCallback(() => {
         const getParkInfo = async () => {
@@ -42,6 +44,7 @@ const SportsCar = () => {
     const reduxDispatch = useDispatch();
     const onClick = () => {
         reduxDispatch(finishCheck());
+        setClick(false);
     }
 
     useEffect(() => {
@@ -53,18 +56,21 @@ const SportsCar = () => {
     return (
         <>
             {isCheck &&
-                <div className="sportscar">
-                    <div className="bugatti">
-                        <img className="bugatti_body" src={CarBody} alt="" />
-                        <img className={cn("bugatti_tire", { loading })} src={CarTire} alt="" />
-                        <img className={cn("bugatti_tire2", { loading })} src={CarTire} alt="" />
+                <>
+                    <div className="sportscar">
+                        <div className="bugatti">
+                            <img className="bugatti_body" src={CarBody} alt="" />
+                            <img className={cn("bugatti_tire", { loading })} src={CarTire} alt="" />
+                            <img className={cn("bugatti_tire2", { loading })} src={CarTire} alt="" />
+                        </div>
+                        {posible === 1 ?
+                            <div className={cn("status", 'opacity')}><Success /></div>
+                            : posible === 2 ? <div className={cn("status", 'opacity')}><Failure /><Button className="show-result" onClick={() => setClick(true)}>결 과</Button></div>
+                                : <div className={cn("status")}></div>}
                     </div>
-                    {posible === 1 ?
-                        <div className={cn("status", 'opacity')}><Success /> </div>
-                        : posible === 2 ? <div className={cn("status", 'opacity')}><Failure /></div>
-                            : <div className={cn("status")}></div>}
-                </div>
+                </>
             }
+            <ResultContainer click={click} setClick={setClick} />
             <Backdrop className={classes.backdrop} open={isCheck} onClick={onClick} />
         </>
     );

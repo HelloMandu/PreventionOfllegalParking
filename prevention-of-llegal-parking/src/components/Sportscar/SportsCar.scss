@@ -51,9 +51,18 @@
     .opacity{
         opacity: 1;
         transition: opacity 0.2s ease-in-out;
+        .show-result{
+            z-index: 3000;
+            position: absolute;
+            top: 110%;
+            width: 80%; height: 20%;
+            font-weight: bold;
+            border: 1px solid #FFF;
+            color: #FFF;
+            font-size: 20px;
+        }
     }
 }
-
 @keyframes rotate_image {
     100% {
         transform: rotate(-360deg);
