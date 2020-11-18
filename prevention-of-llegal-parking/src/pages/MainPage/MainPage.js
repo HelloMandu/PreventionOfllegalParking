@@ -11,6 +11,7 @@ import useLocation from "../../hooks/useLocation";
 import useToggle from "../../hooks/useToggle";
 
 import "./MainPage.scss";
+import CheckContainer from "../../containers/CheckContainer/CheckContainer";
 
 const MainPage = () => {
     const [location, setLocation] = useLocation();
@@ -34,6 +35,7 @@ const MainPage = () => {
                 parkLocListToggle={parkLocListToggle}
                 handleParkLocListToggle={handleParkLocListToggle}
             ></ParkLocListContainer>
+            <CheckContainer />
         </div>
     );
 };

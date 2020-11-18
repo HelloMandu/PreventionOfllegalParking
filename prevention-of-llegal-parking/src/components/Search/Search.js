@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import SearchList from "./SearchList";
 
@@ -6,9 +6,9 @@ import Icon from "../../assets/images/Icons";
 
 import "./Search.scss";
 
-import firebase from 'firebase';
-import { auth } from '../../api/firebase';
-import { Link } from "react-router-dom";
+// import firebase from 'firebase';
+// import { auth } from '../../api/firebase';
+// import { Link } from "react-router-dom";
 
 const Search = (props) => {
     const {
@@ -32,13 +32,13 @@ const Search = (props) => {
         }
     };
 
-    const [currentUser, setState] = useState(false);
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            setState(user);
-        });
-        return () => setState(false);
-    }, []);
+    // const [currentUser, setState] = useState(false);
+    // useEffect(() => {
+    //     auth.onAuthStateChanged((user) => {
+    //         setState(user);
+    //     });
+    //     return () => setState(false);
+    // }, []);
 
     return (
         <div className="searchbar">
@@ -53,7 +53,8 @@ const Search = (props) => {
             <button className="search-click" onClick={onClickSearch}>
                 <Icon>{"search"}</Icon>
             </button>
-            <div className="login-div">
+            {/* 로그인 */}
+            {/* <div className="login-div">
                 {!currentUser
                     ? <Link to={`/signIn`}><img src={require('../../assets/images/login.svg')} className='login-click' alt="login" /></Link>
                     : <img
@@ -63,7 +64,7 @@ const Search = (props) => {
                         alt="logout"
                     />
                 }
-            </div>
+            </div> */}
             {searchFocus && (
                 <SearchList
                     address={address}
