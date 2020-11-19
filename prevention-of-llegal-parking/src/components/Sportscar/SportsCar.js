@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import cn from "classnames";
 import { useSelector, useDispatch } from "react-redux";
-import { Backdrop } from "@material-ui/core";
+import { Backdrop, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { getPossible } from "../../api/canParking";
 
@@ -11,6 +11,7 @@ import "./SportsCar.scss";
 import { finishCheck } from "../../modules/isCheck";
 import Success from "../../assets/images/Success";
 import Failure from "../../assets/images/Failure";
+import ResultContainer from "../../containers/ResultContainer/ResultContainer";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -21,8 +22,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SportsCar = () => {
+    const [click, setClick] = useState(false);
     const [loading, setLoading] = useState(false);
     const [possible, setPossible] = useState(0);
+    const [result, setResult] = useState({});
     const myLocation = useSelector((state) => state.location);
     const canParking = useCallback(() => {
         setLoading(true);
@@ -34,6 +37,7 @@ const SportsCar = () => {
                 setPossible(1);
             } else {
                 setPossible(2);
+                setResult(response);
             }
         }, 1000);
         setPossible(0);
@@ -49,33 +53,38 @@ const SportsCar = () => {
     }, [isCheck, canParking]);
 
     return (
-        <Backdrop
-            className={classes.backdrop}
-            open={isCheck}
-            onClick={() => reduxDispatch(finishCheck())}
-        >
-            <div className="sportscar">
-                <div className="bugatti">
-                    <img className="bugatti_body" src={CarBody} alt="" />
-                    <img
-                        className={cn("bugatti_tire", { loading })}
-                        src={CarTire}
-                        alt=""
-                    />
-                    <img
-                        className={cn("bugatti_tire2", { loading })}
-                        src={CarTire}
-                        alt=""
-                    />
+        <>
+            <Backdrop
+                className={classes.backdrop}
+                open={isCheck}
+                onClick={() => reduxDispatch(finishCheck())}
+            >
+                <div className="sportscar">
+                    <div className="bugatti">
+                        <img className="bugatti_body" src={CarBody} alt="" />
+                        <img
+                            className={cn("bugatti_tire", { loading })}
+                            src={CarTire}
+                            alt=""
+                        />
+                        <img
+                            className={cn("bugatti_tire2", { loading })}
+                            src={CarTire}
+                            alt=""
+                        />
+                    </div>
+                    <div className={cn("status", possible === 1 ? " success" : "")}>
+                        <Success />
+                    </div>
+                    <div className={cn("status", possible === 2 ? " failure" : "")}>
+                        <Failure />
+                        <Button className="show-result" onClick={() => setClick(true)}>결 과</Button>
+                    </div>
                 </div>
-                <div className={cn("status", possible === 1 ? " success" : "")}>
-                    <Success />
-                </div>
-                <div className={cn("status", possible === 2 ? " failure" : "")}>
-                    <Failure />
-                </div>
-            </div>
-        </Backdrop>
+            </Backdrop>
+            <ResultContainer click={click} setClick={setClick} result={result} />
+
+        </>
     );
 };
 
