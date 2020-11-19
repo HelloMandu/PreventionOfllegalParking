@@ -35,7 +35,7 @@ export const drawMap = (
         location.longitude
     ); // 마커가 표시될 위치입니다
     const marker = new kakao.maps.Marker({
-        position: markerPosition, // 지도 중심좌표에 마커를 생성합니다
+        position: markerPosition, // 지도 중심좌표에 마커를 생성합니다j
         image: markerImage,
     });
 
@@ -79,6 +79,9 @@ export const drawMap = (
 };
 
 const drawMarker = (map, locations, image) => {
+    if(locations === undefined){
+        return;
+    }
     locations.forEach((location) => {
         const imageSize = new kakao.maps.Size(28, 38);
         const markerImage = new kakao.maps.MarkerImage(image, imageSize);
@@ -86,11 +89,10 @@ const drawMarker = (map, locations, image) => {
             location.LATITUDE,
             location.LONGITUDE
         );
-        const marker = new kakao.maps.Marker({
+        new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
             position: markerPosition, // 마커를 표시할 위치
             image: markerImage, // 마커 이미지
-            clickable: true,
         });
     });
 };

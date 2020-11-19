@@ -1,7 +1,6 @@
 .sportscar {
     display: flex;
     width: 100%;
-    height: 88vh;
     justify-content: center;
     .bugatti {
         z-index: 3000;
@@ -40,15 +39,19 @@
     .status{
         z-index: 3000;
         position: absolute;
-        top: 38%;
+        top: 35%;
         display: flex;
-        justify-content: center;
         opacity: 0;
+        justify-content: center;
         > svg{
             width: 70%; height: 70%;
         }
     }
-    .opacity{
+    .success{
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+    }
+    .failure{
         opacity: 1;
         transition: opacity 0.2s ease-in-out;
         .show-result{

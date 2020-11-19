@@ -1,11 +1,13 @@
 .result-container{
+    z-index: 4000;
     position: absolute;
-    width: 70%;
-    height: 70%;
+    // width: 70%;
+    width: 700px;
+    height: 700px;
+    // height: 70%;
     top: 100%; left: 50%;
     transform: translateX(-50%);
     background-color: white;
-    z-index: 3000;
     box-shadow: 1px 1px 3px;
     transition: all .3s ease-in;
     border-radius: 24px;
@@ -28,8 +30,42 @@
             }
         }
     }
+    .text-area{
+        margin-top: 40px;
+        font-size: 20px;
+        text-align: center;
+        > p{height: 14px;}
+        > span{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .bar{
+            margin: 50px auto 0 auto;
+            padding-bottom: 15px;
+            width: 80%;
+            border-bottom: 1px solid black;
+            display: flex;
+            .gubun{
+                width: 20%;
+            }
+            .location{
+                width: 80%;
+            }
+        }
+    }
 }
 
+.result-item{
+    display: flex;
+    margin: 30px auto 0 auto;
+    width: 80%;
+    .result-title{
+        width: 20%;
+    }
+    .result-address{
+        width: 80%;
+    }
+}
 .click{
     top: 50%;
     transform: translate(-50%,-50%);
