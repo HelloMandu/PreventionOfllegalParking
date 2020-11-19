@@ -83,6 +83,7 @@ const SportsCar = () => {
                 </div>
             </Backdrop>
             <ResultContainer click={click} setClick={setClick} result={result} />
+
         </>
     );
 };
