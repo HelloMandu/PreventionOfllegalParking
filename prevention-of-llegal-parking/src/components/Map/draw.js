@@ -29,6 +29,10 @@ export const drawMap = (
     };
 
     const map = new kakao.maps.Map(container, options); // 지도생성
+    const geocoder = new kakao.maps.services.Geocoder();
+    const searchDetailAddrFromCoords = (coords, callback) => {
+        geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    }
 
     const markerPosition = new kakao.maps.LatLng(
         location.latitude,
@@ -46,7 +50,12 @@ export const drawMap = (
         marker.setPosition(latlng);
         const latitude = latlng.Ma;
         const longitude = latlng.La;
-        setLocation({ latitude, longitude });
+        searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                const isBuilding = !!result[0].road_address;
+                setLocation({ latitude, longitude, isBuilding} );
+            }   
+        });
     });
 
     const zoomControl = new kakao.maps.ZoomControl();

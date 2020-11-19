@@ -17,7 +17,6 @@ const MainPage = () => {
     const [location, setLocation] = useLocation();
     const [parkLocListToggle, handleParkLocListToggle] = useToggle();
     const [type, setType] = useState(1);
-
     return (
         <div className="main-page">
             <SearchContainer></SearchContainer>
