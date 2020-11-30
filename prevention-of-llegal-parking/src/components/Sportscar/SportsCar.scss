@@ -44,6 +44,7 @@
         justify-content: center;
         opacity: 0;
         justify-content: center;
+        pointer-events: none;
         > svg{
             width: 70%; height: 70%;
         }
@@ -51,10 +52,12 @@
     .success{
         opacity: 1;
         transition: opacity 0.2s ease-in-out;
+        pointer-events: auto;
     }
     .failure{
         opacity: 1;
         transition: opacity 0.2s ease-in-out;
+        pointer-events: auto;
         .show-result{
             z-index: 3000;
             position: absolute;

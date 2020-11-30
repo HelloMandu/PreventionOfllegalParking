@@ -64,7 +64,7 @@ const location = handleActions(
         [SET_LOCATION]: (state, { payload: location }) => ({
             latitude: location.latitude,
             longitude: location.longitude,
-            isBuilding: location.isBuilding
+            isBuilding: location.isBuilding !== undefined ? location.isBuilding : false
         }),
     },
     initialState

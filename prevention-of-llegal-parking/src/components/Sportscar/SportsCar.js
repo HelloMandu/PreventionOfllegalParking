@@ -12,12 +12,12 @@ import { finishCheck } from "../../modules/isCheck";
 import Success from "../../assets/images/Success";
 import Failure from "../../assets/images/Failure";
 import ResultContainer from "../../containers/ResultContainer/ResultContainer";
+import { console } from "window-or-global";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         zIndex: theme.zIndex.drawer + 1,
         color: "#fff",
-        height: "100vh",
     },
 }));
 
@@ -32,13 +32,14 @@ const SportsCar = () => {
         setTimeout(async () => {
             setLoading(false);
             const response = await getPossible(myLocation);
+            console.log(myLocation);
             console.log(response);
-            if (response.can_parking) {
+            if (myLocation.isBuilding || response.can_parking) {
                 setPossible(1);
             } else {
                 setPossible(2);
-                setResult(response);
             }
+            setResult(response);
         }, 1000);
         setPossible(0);
     }, [myLocation]);
@@ -73,17 +74,35 @@ const SportsCar = () => {
                             alt=""
                         />
                     </div>
-                    <div className={cn("status", possible === 1 ? " success" : "")}>
+                    <div
+                        className={cn(
+                            "status",
+                            possible === 1 ? " success" : ""
+                        )}
+                    >
                         <Success />
                     </div>
-                    <div className={cn("status", possible === 2 ? " failure" : "")}>
+                    <div
+                        className={cn(
+                            "status",
+                            possible === 2 ? " failure" : ""
+                        )}
+                    >
                         <Failure />
-                        <Button className="show-result" onClick={() => setClick(true)}>결 과</Button>
+                        <Button
+                            className="show-result"
+                            onClick={() => setClick(true)}
+                        >
+                            결 과
+                        </Button>
                     </div>
                 </div>
             </Backdrop>
-            <ResultContainer click={click} setClick={setClick} result={result} />
-
+            <ResultContainer
+                click={click}
+                setClick={setClick}
+                result={result}
+            />
         </>
     );
 };

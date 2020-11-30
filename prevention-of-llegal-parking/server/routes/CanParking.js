@@ -13,8 +13,8 @@ api.get('/can_parking', (ctx) => {
     latitude: latitude,
     longitude: longitude,
   }
-  const cctv = getCoordinates(busanCCTV, location, 50);
-  const children = getCoordinates(busanChildren, location, 50);
+  const cctv = getCoordinates(busanCCTV, location, 30);
+  const children = getCoordinates(busanChildren, location, 30);
   const can_parking = ((cctv.length || children.length) ? false : true);
   ctx.body = {can_parking, cctv, children};
 });

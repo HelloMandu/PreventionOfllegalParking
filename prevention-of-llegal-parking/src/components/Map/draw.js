@@ -50,7 +50,7 @@ export const drawMap = (
         marker.setPosition(latlng);
         const latitude = latlng.Ma;
         const longitude = latlng.La;
-        searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+        searchDetailAddrFromCoords(mouseEvent.latLng, (result, status) => {
             if (status === kakao.maps.services.Status.OK) {
                 const isBuilding = !!result[0].road_address;
                 setLocation({ latitude, longitude, isBuilding} );
