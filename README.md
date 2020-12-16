@@ -1,24 +1,24 @@
 <h1 align="center">Prevention Of IllegalParking</h1>
 
-<p align="center"><img src="https://user-images.githubusercontent.com/45222982/93844186-4a1ffd00-fcd7-11ea-8c83-46bb66d1f8ab.png" width="240" /></p>
-
-## 프로젝트 참가 이력
-- Thisis Backend
-  - WeShow
-  - 학식정보
-  - 전화번호부
-  - 학사일정
+## Features
+- React Project
+  - 현재위치이동
+  - 주소검색
+  - 불법주정차공간 판단
+  - 주변 cctv, 학교, 주차장 위치 확인
  
-
+## API
+ - 카카오지도: https://apis.map.kakao.com/
+ - 주소검색: https://www.juso.go.kr/openIndexPage.do
+ 
 ## Tech
- - Hooks
- - 
- - JSON
- - simpledom
- - crawling
- - BackTraking Algorithm
- - cron scheduler
-
+ - React-Hooks
+ - React-Redux
+ - Redux-Saga
+ - axios
+ - React-Router
+ - swiper
+ - express
 
 ## WeShow
   시간표 경우의 수 자동생성 프로그램
