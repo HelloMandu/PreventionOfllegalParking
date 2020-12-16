@@ -24,7 +24,7 @@
   시간표 경우의 수 자동생성 프로그램
 
 ### Screen Shots
-<p align="center"><img src="https://user-images.githubusercontent.com/45222982/93857691-f40e8200-fcf5-11ea-9e4f-f13ddaca4285.png" width="280" height="500"/> <img src="https://user-images.githubusercontent.com/45222982/93857700-f670dc00-fcf5-11ea-9a30-a4d41e9f9fe6.png" width="280" height="500"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/45222982/102353469-70aab700-3fec-11eb-97e1-af26eae25aba.png" width="280" height="500"/> <img src="https://user-images.githubusercontent.com/45222982/102353465-6ee0f380-3fec-11eb-9f6a-be0abfffcfb0.png" width="280" height="500"/><img src="https://user-images.githubusercontent.com/45222982/102353463-6e485d00-3fec-11eb-98da-ca8955a11c05.png" width="280" height="500"/><img src="https://user-images.githubusercontent.com/45222982/102353460-6d173000-3fec-11eb-9a20-4b71a8ec5561.png" width="280" height="500"/></p>
 
 ### Function
 
