@@ -128,3 +128,6 @@ function* setRoadToPosition(action) {
     }
 }
 ```
+
+## TODO
+ - 카카오지도 api최적화
