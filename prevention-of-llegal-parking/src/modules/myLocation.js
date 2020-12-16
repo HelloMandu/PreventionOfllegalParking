@@ -25,7 +25,6 @@ export const roadToPositionSaga = createAction(
 
 function* setLocationAsync(action) {
     yield put(startLoading());
-    console.log(action.payload);
     yield put(setCCTVSaga(action.payload));
     yield put(setChildrenSaga(action.payload));
     yield put(setParkingLotSaga(action.payload));
@@ -44,7 +43,7 @@ function* setRoadToPosition(action) {
         yield put(setParkingLotSaga({ latitude, longitude }));
         yield put(finishLoading());
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
 }
 

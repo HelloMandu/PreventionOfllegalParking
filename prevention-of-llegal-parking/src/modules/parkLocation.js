@@ -42,7 +42,7 @@ function* getCCTVSaga(action) {
         const response = yield call(getCCTV, action.payload);
         yield put(setCCTV(response));
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
 }
 
@@ -51,7 +51,7 @@ function* getChildrenSaga(action) {
         const response = yield call(getChildren, action.payload);
         yield put(setChildren(response));
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
 }
 
@@ -60,7 +60,7 @@ function* getParkingLotSaga(action) {
         const response = yield call(getParkingLot, action.payload);
         yield put(setParkingLot(response));
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
 }
 

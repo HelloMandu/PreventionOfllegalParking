@@ -12,7 +12,6 @@ import { finishCheck } from "../../modules/isCheck";
 import Success from "../../assets/images/Success";
 import Failure from "../../assets/images/Failure";
 import ResultContainer from "../../containers/ResultContainer/ResultContainer";
-import { console } from "window-or-global";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -32,8 +31,6 @@ const SportsCar = () => {
         setTimeout(async () => {
             setLoading(false);
             const response = await getPossible(myLocation);
-            console.log(myLocation);
-            console.log(response);
             if (myLocation.isBuilding || response.can_parking) {
                 setPossible(1);
             } else {
