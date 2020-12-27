@@ -38,7 +38,7 @@
 
 ## Explain
  - kakaomap을 이용하여 부산광역시 내의 cctv, 학교, 주차장 위치를 마커로 표시하였습니다.
- - Express.js를 이용해 api 서버를 만들어 주변 2KM이내 정보만 표시하였습니다
+ - Koa.js를 이용해 api 서버를 만들어 주변 2KM이내 정보만 표시하였습니다
  - Redux, Redux-Saga를 사용하여 위치정보를 요청하고 정리하였습니다.
  <p align="center">
    <img src="https://user-images.githubusercontent.com/45222982/102355671-8a013280-3fef-11eb-9e55-4cd3b65e8a29.png" width="800" height="300"/>
