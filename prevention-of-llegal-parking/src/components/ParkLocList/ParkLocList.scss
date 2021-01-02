@@ -8,24 +8,42 @@
         border-top: 1px solid black;
         cursor: pointer;
         .parkloc-title{
-            font-size: 20px;
+            font-size: 1rem;
             font-weight: bold;
             margin: 8px;
         }
         .parkloc-content{
             display: flex;
+            align-items: flex-end;
             justify-content: space-between;
             margin: 8px;
             line-height: 18px;
+            .parkloc-address{
+                font-size: 1rem;
+                overflow-wrap: break-word;
+            }
+            .parkloc-feature{
+                font-size: 0.9rem;
+            }
             .parkloc-detail{
                 display: flex;
-                .parkloc-feature{
-                    margin-right: 8px;
-                }
+                min-width: 48px;
+                margin-left: 8px;
                 .parkloc-distance{
-                    font-size: 24px;
+                    margin-left: 8px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-size: 1.3rem;
                     font-weight: bold;
                 }
+            }
+        }
+        @media (max-width: 768px) {
+            .parkloc-detail{
+                height: 48px;
+                justify-content: space-between;
+                align-items: flex-end;
+                flex-direction: column;
             }
         }
     }

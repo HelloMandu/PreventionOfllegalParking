@@ -39,7 +39,7 @@ export const drawMap = (
         location.longitude
     ); // 마커가 표시될 위치입니다
     const marker = new kakao.maps.Marker({
-        position: markerPosition, // 지도 중심좌표에 마커를 생성합니다j
+        position: markerPosition, // 지도 중심좌표에 마커를 생성합니다
         image: markerImage,
     });
 

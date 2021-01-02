@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import "./ParkLocList.scss";
 
@@ -18,17 +18,15 @@ const ParkLocItem = React.memo(({ title, address, feature, distance }) => {
 });
 
 const ParkLocList = ({ parkLocation, type }) => {
-    const id = useRef(0);
     if(parkLocation === undefined){
-        return<></>
+        return <></>
     }
     if (type === "cctv") {
         return (
             <ul className="parkloc-list">
-                {parkLocation.map(({ GUBUN, ADDR_ROAD, PIXEL, DISTANCE }) => {
-                    id.current += 1;
+                {parkLocation.map(({ GUBUN, ADDR_ROAD, PIXEL, DISTANCE }, index) => {
                     return (
-                        <li key={id.current}>
+                        <li key={index}>
                             <ParkLocItem
                                 title={GUBUN}
                                 address={ADDR_ROAD}
@@ -43,10 +41,9 @@ const ParkLocList = ({ parkLocation, type }) => {
     } else if (type === "children") {
         return (
             <ul className="parkloc-list">
-                {parkLocation.map(({ TYPE_NAME, ADDR_ROAD, TYPE, DISTANCE }) => {
-                    id.current += 1;
+                {parkLocation.map(({ TYPE_NAME, ADDR_ROAD, TYPE, DISTANCE }, index) => {
                     return (
-                        <li key={id.current}>
+                        <li key={index}>
                             <ParkLocItem
                                 title={TYPE_NAME}
                                 address={ADDR_ROAD}
@@ -61,10 +58,9 @@ const ParkLocList = ({ parkLocation, type }) => {
     } else if(type === "parkinglot"){
         return (
             <ul className="parkloc-list">
-                {parkLocation.map(({ NAME, ADDR_JIBUN, TYPE, DISTANCE }) => {
-                    id.current += 1;
+                {parkLocation.map(({ NAME, ADDR_JIBUN, TYPE, DISTANCE }, index) => {
                     return (
-                        <li key={id.current}>
+                        <li key={index}>
                             <ParkLocItem
                                 title={NAME}
                                 address={ADDR_JIBUN}
